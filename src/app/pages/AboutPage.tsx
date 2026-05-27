@@ -69,8 +69,8 @@ export function AboutPage() {
     { year: '2015', title: 'Career Development Center', desc: 'Central test - албан ёсны эрхтэйгээр Монголд нэвтрүүлсэн' },
     { year: '2015', title: 'Harvard Business Review', desc: 'United Business Review' },
     { year: '2020', title: 'Business Academy', desc: 'Harvard Managementor хөтөлбөрийг хэрэгжүүлж эхэлсэн' },
-    { year: '2025', title: 'TalentHub Mongolia', desc: 'TalentHub Mongolia төслийн эхлэл — Talent AI нэвтрүүлсэн' },
-    { year: '2026', title: 'Өнөөдөр', desc: 'Монголын тэргүүлэх AI HR зөвлөх платформ' }
+    { year: '2025', title: 'TalentHub Mongolia', desc: 'TalentHub Mongolia төслийн эхлэл' },
+    { year: '2026', title: 'Өнөөдөр', desc: 'Talent AI нэвтрүүлсэн' }
   ];
 
   return (
@@ -140,7 +140,7 @@ export function AboutPage() {
                   href="#leadership"
                   className="group bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-pink-500/30"
                 >
-                  Удирдах багтай танилцах
+                  Удирдлагын баг
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
@@ -257,12 +257,12 @@ export function AboutPage() {
             className="text-center mb-16"
           >
             <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
-              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ҮНЭТ ЗҮЙЛС</span>
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">cor value</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
-              Юунд{' '}
+              Үнэт{' '}
               <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                итгэдэг вэ
+                Зүйл
               </span>
             </h2>
           </motion.div>
