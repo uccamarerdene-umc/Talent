@@ -1,7 +1,44 @@
-import { SectionHeader } from '../components/brand/SectionHeader';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useScroll } from 'motion/react';
 import { TestimonialCarousel } from '../components/brand/TestimonialCarousel';
 import { CTABlock } from '../components/brand/CTABlock';
-import { Lightbulb, Eye, Handshake } from 'lucide-react';
+import { Lightbulb, Eye, Handshake, ArrowRight, Sparkles, Linkedin } from 'lucide-react';
+
+// Тоо автоматаар ургадаг
+function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const increment = end / (duration * 60);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 1000 / 60);
+    return () => clearInterval(timer);
+  }, [isInView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+// Sticky scroll progress
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E63995] via-[#5B3FBC] to-[#E63995] origin-left z-50"
+      style={{ scaleX: scrollYProgress }}
+    />
+  );
+}
 
 export function AboutPage() {
   const leadership = [
@@ -29,141 +66,335 @@ export function AboutPage() {
   ];
 
   const timeline = [
-    { year: '2015', title: 'Career development Center', desc: 'Central test - албан ёсны эрхтэйгээр Монголд нэвтрүүлсэн' },
-    { year: '2015', title: 'Harvard Business review', desc: 'United Business Review' },
+    { year: '2015', title: 'Career Development Center', desc: 'Central test - албан ёсны эрхтэйгээр Монголд нэвтрүүлсэн' },
+    { year: '2015', title: 'Harvard Business Review', desc: 'United Business Review' },
     { year: '2020', title: 'Business Academy', desc: 'Harvard Managementor хөтөлбөрийг хэрэгжүүлж эхэлсэн' },
-    { year: '2025', title: 'TalentHub Mongolia', desc: 'TalentHub Mongolia төслийн эхлэл Talent AI нэвтрүүлсэн' },
+    { year: '2025', title: 'TalentHub Mongolia', desc: 'TalentHub Mongolia төслийн эхлэл — Talent AI нэвтрүүлсэн' },
     { year: '2026', title: 'Өнөөдөр', desc: 'Монголын тэргүүлэх AI HR зөвлөх платформ' }
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* HERO */}
-      <section className="bg-white py-20">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="flex items-center gap-2 mb-4 text-[#E63995]">
-            <span className="font-semibold text-xs tracking-[0.15em] uppercase">{"БИДНИЙ ТУХАЙ"}</span>
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-bold text-[#1A0F3E] mb-6 max-w-4xl">
-            {"United Consulting Management"}
-          </h1>
-          <p className="text-xl text-[#6B6485] max-w-3xl leading-relaxed">
-            {"Байгууллагын засаглал, удирдлагын чадамж, өөрчлөлтийн манлайллыг хурдасгагч байх."}
-          </p>
-        </div>
-      </section>
+    <div className="min-h-screen">
+      <ScrollProgress />
 
-      {/* LEADERSHIP */}
-      <section className="bg-[#FAFAFC] py-24">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <SectionHeader
-            eyebrowText="УДИРДЛАГА"
-            title="Манай удирдах баг"
+      {/* ============ HERO ============ */}
+      <section className="relative bg-[#1A0F3E] pt-32 pb-24 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#5B3FBC] rounded-full opacity-40 blur-3xl"
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {leadership.map((leader) => (
-              <div key={leader.name} className="text-center group">
-                <div className="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden bg-[#E9E2FA]">
-                  <img 
-                    src={leader.image} 
-                    alt={leader.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-[#1A0F3E] mb-2">{leader.name}</h3>
-                <p className="text-[#6B6485] mb-4">{leader.role}</p>
-                <a href="#" className="text-[#E63995] hover:underline">
-                  <svg className="w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <section className="bg-white py-24">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <SectionHeader
-            eyebrowText="ҮНЭТ ЗҮЙЛС"
-            title="ҮНЭТ ЗҮЙЛС"
-            centered
+          <motion.div
+            animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute right-1/3 top-1/2 w-[500px] h-[500px] bg-[#E63995] rounded-full opacity-25 blur-3xl"
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#FFD6E8] flex items-center justify-center">
-                  <value.icon className="w-10 h-10 text-[#E63995]" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#1A0F3E] mb-4">{value.title}</h3>
-                <p className="text-[#6B6485] leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-
-      {/* MISSION */}
-      <section className="bg-[#2A1466] py-24 relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-[#5B3FBC] rounded-full opacity-30 blur-3xl" />
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
 
         <div className="relative max-w-[1280px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4 text-[#FFD6E8]">
-                <span>★</span>
-                <span className="font-semibold text-xs tracking-[0.15em] uppercase">{"ЭРХЭМ ЗОРИЛГО"}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>БИДНИЙ ТУХАЙ</span>
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]"
+              >
+                United Consulting{' '}
+                <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
+                  Management
+                </span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl text-white/70 max-w-2xl leading-relaxed mb-10"
+              >
+                Байгууллагын засаглал, удирдлагын чадамж, өөрчлөлтийн манлайллыг хурдасгагч байх.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
+              >
+                <a
+                  href="#leadership"
+                  className="group bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-pink-500/30"
+                >
+                  Удирдах багтай танилцах
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="/contact"
+                  className="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all"
+                >
+                  Холбоо барих
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right side stat card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="lg:col-span-5"
+            >
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+                <div className="text-sm text-[#FFD6E8] uppercase tracking-widest mb-4">
+                  Бидний амжилт
+                </div>
+                <div className="space-y-6">
+                  {[
+                    { num: '10+', label: 'Жилийн туршлага' },
+                    { num: '50+', label: 'Үйлчилүүлэгч байгууллага' },
+                    { num: '1000+', label: 'Менежер дамжсан' },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                      className="flex items-baseline justify-between border-b border-white/10 pb-4 last:border-0"
+                    >
+                      <div className="text-5xl font-bold text-white">{item.num}</div>
+                      <div className="text-sm text-white/60 text-right max-w-[60%]">{item.label}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <h2 className="text-4xl font-bold text-white mb-6">
-                {"Бид өөрчлөлтийг хурдасгах удирдагчдыг бэлдэнэ."}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ LEADERSHIP ============ */}
+      <section id="leadership" className="bg-white py-32">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">УДИРДЛАГА</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
+              Манай{' '}
+              <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
+                удирдах баг
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {leadership.map((leader, idx) => (
+              <motion.div
+                key={leader.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="group relative"
+              >
+                <div className="relative bg-[#FAFAFC] border border-[#EBE7F4] rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F3E]/80 via-transparent to-transparent" />
+                    <a
+                      href="#"
+                      className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-[#E63995] hover:border-[#E63995] transition-colors"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#1A0F3E] mb-1 group-hover:text-[#E63995] transition-colors">
+                      {leader.name}
+                    </h3>
+                    <p className="text-[#6B6485] text-sm">{leader.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ VALUES ============ */}
+      <section className="bg-[#FAFAFC] py-32">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ҮНЭТ ЗҮЙЛС</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
+              Юунд{' '}
+              <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
+                итгэдэг вэ
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {values.map((value, idx) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-10 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FFD6E8]/0 to-[#FFD6E8]/0 group-hover:from-[#FFD6E8]/20 group-hover:to-transparent transition-all duration-500" />
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FFD6E8] to-[#E63995]/30 flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+                    <value.icon className="w-8 h-8 text-[#E63995]" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#1A0F3E] mb-4">{value.title}</h3>
+                  <p className="text-[#6B6485] leading-relaxed">{value.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ MISSION ============ */}
+      <section className="bg-[#1A0F3E] py-32 relative overflow-hidden">
+        <motion.div
+          animate={{ x: [0, 80, 0], y: [0, -40, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute right-0 top-0 w-96 h-96 bg-[#5B3FBC] rounded-full opacity-40 blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -60, 0], y: [0, 50, 0] }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute left-0 bottom-0 w-80 h-80 bg-[#E63995] rounded-full opacity-25 blur-3xl"
+        />
+
+        <div className="relative max-w-[1280px] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Sparkles className="w-4 h-4" />
+                <span>ЭРХЭМ ЗОРИЛГО</span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Бид өөрчлөлтийг хурдасгах{' '}
+                <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
+                  удирдагчдыг бэлдэнэ.
+                </span>
               </h2>
-              <p className="text-white/70 mb-8 leading-relaxed">
-                {"Дэлхийн шилдэг манлайллын туршлагаар ТУЗ, гүйцэтгэх удирдлагын өсөлтийн сэтгэлгээг хөгжүүлж, өөрчлөлтийг хурдасгагч удирдагчдыг бэлтгэдэг манлайллын экосистемийг бүрдүүлнэ."}
+              <p className="text-white/70 mb-8 leading-relaxed text-lg">
+                Дэлхийн шилдэг манлайллын туршлагаар ТУЗ, гүйцэтгэх удирдлагын өсөлтийн сэтгэлгээг хөгжүүлж, өөрчлөлтийг хурдасгагч удирдагчдыг бэлтгэдэг манлайллын экосистемийг бүрдүүлнэ.
               </p>
               <a
                 href="/services"
-                className="inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2A1466] transition-colors"
+                className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30"
               >
-                {"Үйлчилгээ үзэх →"}
+                Үйлчилгээ үзэх
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
-            <div className="bg-[#E9E2FA] rounded-xl p-8 aspect-video flex items-center justify-center">
-              <div className="text-center text-[#5B3FBC]">
-                <div className="text-6xl font-bold mb-2">{"50+"}</div>
-                <div className="text-lg">{"Байгууллагад үйлчилж байна"}</div>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center">
+              <div className="text-8xl lg:text-9xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-4">
+                <CountUp end={50} suffix="+" />
               </div>
+              <div className="text-xl text-white/80">Байгууллагад үйлчилж байна</div>
+              <div className="text-sm text-white/40 mt-2">2015 оноос хойш</div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* TIMELINE */}
-      <section className="bg-white py-24">
+      {/* ============ TIMELINE ============ */}
+      <section className="bg-white py-32">
         <div className="max-w-[1280px] mx-auto px-6">
-          <SectionHeader
-            eyebrowText="ТҮҮХ"
-            title="Бидний түүх"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ТҮҮХ</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
+              Бидний{' '}
+              <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
+                түүх
+              </span>
+            </h2>
+          </motion.div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-[#EBE7F4]" />
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#E63995] via-[#5B3FBC] to-[#FFD6E8]" />
 
-            <div className="space-y-12">
+            <div className="space-y-8">
               {timeline.map((item, idx) => (
-                <div key={idx} className="relative pl-20">
-                  <div className="absolute left-5 top-1 w-6 h-6 rounded-full bg-[#E63995] border-4 border-white" />
-                  <div className="bg-[#FAFAFC] rounded-xl p-6">
-                    <div className="text-2xl font-bold text-[#E63995] mb-2">{item.year}</div>
-                    <h3 className="text-xl font-bold text-[#1A0F3E] mb-2">{item.title}</h3>
-                    <p className="text-[#6B6485]">{item.desc}</p>
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="relative pl-24"
+                >
+                  <div className="absolute left-5 top-3 w-7 h-7 rounded-full bg-gradient-to-br from-[#E63995] to-[#5B3FBC] border-4 border-white shadow-lg shadow-pink-500/30" />
+
+                  <div className="group bg-[#FAFAFC] hover:bg-white border border-[#EBE7F4] hover:border-[#E63995] rounded-2xl p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+                    <div className="flex items-baseline gap-4 mb-2">
+                      <div className="text-3xl font-bold bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
+                        {item.year}
+                      </div>
+                      <div className="h-px flex-1 bg-[#EBE7F4]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#1A0F3E] mb-2 group-hover:text-[#E63995] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#6B6485] leading-relaxed">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
