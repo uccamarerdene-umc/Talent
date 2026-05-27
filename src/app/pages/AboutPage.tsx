@@ -5,31 +5,31 @@ import { Lightbulb, Eye, Handshake } from 'lucide-react';
 
 export function AboutPage() {
   const leadership = [
-    { name: 'Д. Ерөө', role: 'Ерөнхий захирал', initial: 'Б' },
-    { name: 'Д. Асралт', role: 'Гүйцэтгэх захирал', initial: 'О' },
-    { name: 'Ц. Булган', role: 'Гүйцэтгэх захирал', initial: 'Э' }
+    { name: 'Д. Ерөө', role: 'Ерөнхий захирал', image: '/6.jpg' },
+    { name: 'Д. Асралт', role: 'Гүйцэтгэх захирал', image: '/8.jpg' },
+    { name: 'Ц. Булган', role: 'Гүйцэтгэх захирал', image: '/5.jpg' }
   ];
 
   const values = [
     {
       icon: Lightbulb,
       title: 'Growth mindset',
-      description: 'Бид сорилт бүрийг боломж гэж харж, тасралтгүй суралцаж,сурсан бүхнээ бусадтай хуваалцдаг.'
+      description: 'Бид сорилт бүрийг боломж гэж харж, тасралтгүй суралцаж, сурсан бүхнээ бусадтай хуваалцдаг.'
     },
     {
       icon: Eye,
       title: 'Operational excellence',
-      description: 'Бид процесс бүрийг нарийвчалтай, үр ашигтай,стандарттай зохион байгуулдаг.'
+      description: 'Бид процесс бүрийг нарийвчлалтай, үр ашигтай, стандарттай зохион байгуулдаг.'
     },
     {
       icon: Handshake,
       title: 'Data-driven',
-      description: 'Таамаглал бус.бодит өгөгдөл, судалгаа шинжлэх ухааны үндэслэлтэй шийдвэр гаргадаг'
+      description: 'Таамаглал бус, бодит өгөгдөл, судалгаа шинжлэх ухааны үндэслэлтэй шийдвэр гаргадаг.'
     }
   ];
 
   const timeline = [
-    { year: '2015', title: 'Career development Center', desc: 'Central test-албан ёсны эрхтэйгээр Монголд нэвтрүүлсэн' },
+    { year: '2015', title: 'Career development Center', desc: 'Central test - албан ёсны эрхтэйгээр Монголд нэвтрүүлсэн' },
     { year: '2015', title: 'Harvard Business review', desc: 'United Business Review' },
     { year: '2020', title: 'Business Academy', desc: 'Harvard Managementor хөтөлбөрийг хэрэгжүүлж эхэлсэн' },
     { year: '2025', title: 'TalentHub Mongolia', desc: 'TalentHub Mongolia төслийн эхлэл Talent AI нэвтрүүлсэн' },
@@ -42,14 +42,13 @@ export function AboutPage() {
       <section className="bg-white py-20">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="flex items-center gap-2 mb-4 text-[#E63995]">
-            
-            <span className="font-semibold text-xs tracking-[0.15em] uppercase">БИДНИЙ ТУХАЙ</span>
+            <span className="font-semibold text-xs tracking-[0.15em] uppercase">{"БИДНИЙ ТУХАЙ"}</span>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-[#1A0F3E] mb-6 max-w-4xl">
-            United Consulting Management
+            {"United Consulting Management"}
           </h1>
           <p className="text-xl text-[#6B6485] max-w-3xl leading-relaxed">
-            Байгууллагын засаглал, удирдлагын чадамж, өөрчлөлтийн манлайллыг хурдасгагч байх.
+            {"Байгууллагын засаглал, удирдлагын чадамж, өөрчлөлтийн манлайллыг хурдасгагч байх."}
           </p>
         </div>
       </section>
@@ -65,8 +64,12 @@ export function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leadership.map((leader) => (
               <div key={leader.name} className="text-center group">
-                <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-[#E9E2FA] flex items-center justify-center text-6xl font-bold text-[#5B3FBC] group-hover:bg-[#5B3FBC] group-hover:text-white transition-colors">
-                  {leader.initial}
+                <div className="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden bg-[#E9E2FA]">
+                  <img 
+                    src={leader.image} 
+                    alt={leader.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-[#1A0F3E] mb-2">{leader.name}</h3>
                 <p className="text-[#6B6485] mb-4">{leader.role}</p>
@@ -113,26 +116,26 @@ export function AboutPage() {
             <div>
               <div className="flex items-center gap-2 mb-4 text-[#FFD6E8]">
                 <span>★</span>
-                <span className="font-semibold text-xs tracking-[0.15em] uppercase">ЭРХЭМ ЗОРИЛГО</span>
+                <span className="font-semibold text-xs tracking-[0.15em] uppercase">{"ЭРХЭМ ЗОРИЛГО"}</span>
               </div>
               <h2 className="text-4xl font-bold text-white mb-6">
-                Бид өөрчлөлтийг хурдасгах удирдагчдыг бэлдэнэ.
+                {"Бид өөрчлөлтийг хурдасгах удирдагчдыг бэлдэнэ."}
               </h2>
               <p className="text-white/70 mb-8 leading-relaxed">
-                Дэлхийн шилдэг манлайллын туршлагаар ТУЗ, гүйцэтгэх удирдлагын өсөлтийн сэтгэлгээг хөгжүүлж, өөрчлөлтийг хурдасгагч удирдагчдыг бэлтгэдэг манлайллын экосистемийг бүрдүүлнэ.
+                {"Дэлхийн шилдэг манлайллын туршлагаар ТУЗ, гүйцэтгэх удирдлагын өсөлтийн сэтгэлгээг хөгжүүлж, өөрчлөлтийг хурдасгагч удирдагчдыг бэлтгэдэг манлайллын экосистемийг бүрдүүлнэ."}
               </p>
               <a
                 href="/services"
                 className="inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2A1466] transition-colors"
               >
-                Үйлчилгээ үзэх →
+                {"Үйлчилгээ үзэх →"}
               </a>
             </div>
 
             <div className="bg-[#E9E2FA] rounded-xl p-8 aspect-video flex items-center justify-center">
               <div className="text-center text-[#5B3FBC]">
-                <div className="text-6xl font-bold mb-2">50+</div>
-                <div className="text-lg">Байгууллагад үйлчилж байна</div>
+                <div className="text-6xl font-bold mb-2">{"50+"}</div>
+                <div className="text-lg">{"Байгууллагад үйлчилж байна"}</div>
               </div>
             </div>
           </div>

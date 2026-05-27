@@ -8,24 +8,26 @@ export function ServicesPage() {
     {
       number: '01',
       title: 'Сонгон шалгаруулалт',
-      description: 'Central Test-олон улсын сэтгэл тест үнэлгээни үр дүнг AI-аар тайлбарлаж, ажил горилогчийн ажлын байранд нийцэх эсэхийг богино хугацаанд мэдэх боломжтой.',
+      description: 'Central Test-олон улсын сэтгэл тест үнэлгээний үр дүнг хиймэл оюун ухаанаар дамжуулан тайлбарлаж, ажил горилогчийн ажлын байранд нийцэх эсэхийг богино хугацаанд мэдэх боломжтой.',
       bullets: [
-        'Ажил горилогчийн тест үнэлгээний үр дүн,тайлбар',
-        'Ажлын байрны дахь ур чадварын  шаардлагатай харьцуулалт',
+        'Ажил горилогчийн тест үнэлгээний үр дүн, тайлбар',
+        'Ажлын байрны дахь ур чадварын шаардлагатай харьцуулалт',
         'Өрөөсгөл биш үндэслэлтэй сонголт хийх боломж'
       ],
-      icon: Search
+      icon: Search,
+      image: '/1.png'
     },
     {
       number: '02',
       title: 'Talent Management',
-      description: 'Ажилчдын сэтгэл зүйн тест үнэлгээний үр дүнд үндэслэн цаашдын хөгжлийн төлөвлөгөө, хүний нөөцийн бодлого төлөвлөлт хийх боломжтой.',
+      description: 'Ажилчдын сэтгэл зүйн тест үнэлгээний үр дүнд үндэслен цаашдын хөгжлийн төлөвлөгөө, хүний нөөцийн бодлого төлөвлөлт хийх боломжтой.',
       bullets: [
         'Зан төлөв, хандлага ур чадварын үзүүлэлт',
         'Байгууллагын хөгжлийн төлөвлөгөө',
         'Big Five-д үндэслэсэн learning style таних'
       ],
-      icon: TrendingUp
+      icon: TrendingUp,
+      image: '/2.jpg'
     },
     {
       number: '03',
@@ -36,30 +38,32 @@ export function ServicesPage() {
         'Зөрчилдөөний урьдчилсан таамаглал',
         'Харилцааны шинжилгээ хийх боломжтой'
       ],
-      icon: Users
+      icon: Users,
+      image: '/3.jpg'
     },
     {
       number: '04',
       title: 'Хөгжлийн боломж',
-      description: 'Сэтгэл зүйн тест үнэлгээний үр дүн, хувь хүний  онцлогт тохирсон, карьер хөгжлийн төлөвлөгөө  зөвлөмж өгнө.',
+      description: 'Сэтгэл зүйн тест үнэлгээний үр дүн, хувь хүний онцлогт тохирсон, карьер хөгжлийн төлөвлөгөө зөвлөмж өгнө.',
       bullets: [
         'Career path mapping',
         'Амжилтын төлөвлөгөө',
         'Нөөц боломжийг тодорхойлох'
       ],
-      icon: Briefcase
+      icon: Briefcase,
+      image: '/4.jpg'
     }
   ];
 
   const advantages = [
     { letter: 'A', title: 'Баталгаажсан мэдлэг', desc: 'Central Test-ийн дата өгөгдөл дээр суурилсан', icon: CheckCircle2 },
-    { letter: 'B', title: 'Контекст ойлголт', desc: 'GraphRAG технологи', icon: Target },
+    { letter: 'B', title: 'Контекст ойлголт', desc: 'GraphRAG технология', icon: Target },
     { letter: 'C', title: 'Шийдвэр хурдасгах', desc: 'Түргэн шуурхай хариулт', icon: Zap },
     { letter: 'D', title: 'Skill Mapping', desc: 'Ур чадварын зураглал', icon: TrendingUp },
     { letter: 'E', title: 'Цаг хэмнэх', desc: 'Хүний нөөцийн багийн ажлын цагийг 70% хэмнэнэ', icon: CheckCircle2 },
     { letter: 'F', title: '24/7 боломжтой', desc: 'Хаанаас ч асууж болно', icon: CheckCircle2 }
   ];
-
+  
   return (
     <div className="min-h-screen pt-20">
       {/* HERO */}
@@ -70,16 +74,16 @@ export function ServicesPage() {
             <span className="font-semibold text-xs tracking-[0.15em] uppercase">ҮЙЛЧИЛГЭЭ</span>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-[#1A0F3E] mb-6 max-w-4xl">
-            Сэтгэл зүйн тест, үнэлгээний үр дүн таны туслах, болно.
+            Сэтгэл зүйн тест, үнэлгээний үр дүн таны туслах болно.
           </h1>
           <p className="text-xl text-[#6B6485] mb-8 max-w-2xl leading-relaxed">
-            Central Test-ийн бүх мэдлэгийн сан, дата, тест тус бүрийн Technical Manual (Техник зааварчилгаа) зэрэгт тулгуурлан GraphRAG технологиор баяжуулан бүтээсэн систем бөгөөд хэрэглэгчид хамгийн чанартай мэдээллийг олгох "Хиймэл оюун ухаант зөвлөх" юм. 
+            Central Test-ийн бүх мэдлэгийн сан, дата, тест тус бүрийн Technical Manual (Техник зааварчилгаа) зэрэгт тулгуурлан GraphRAG технологияор баяжуулан бүтээсэн систем бөгөөд хэрэглэгчид хамгийн чанартай мэдээллийг олгох &quot;Хиймэл оюун ухаант зөвлөх&quot; юм.
           </p>
           <a
             href="#chat"
             className="inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#2A1466] transition-colors"
           >
-            Чат туршиж үзэх →
+            Чат туршиж үзэх &rarr;
           </a>
         </div>
       </section>
@@ -108,13 +112,17 @@ export function ServicesPage() {
                 </ul>
 
                 <a href="#learn-more" className="text-[#E63995] font-semibold hover:underline">
-                  Дэлгэрэнгүй унших →
+                  Дэлгэрэнгүй унших &rarr;
                 </a>
               </div>
 
               <div className={idx % 2 === 1 ? 'lg:order-1' : ''}>
-                <div className="bg-[#E9E2FA] rounded-xl p-12 flex items-center justify-center aspect-square">
-                  <service.icon className="w-48 h-48 text-[#5B3FBC] opacity-20" />
+                <div className="bg-[#E9E2FA] rounded-xl overflow-hidden aspect-square flex items-center justify-center">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -43,7 +43,7 @@ export function CaseStudiesPage() {
       industry: 'Банк',
       status: 'ДУУССАН КЕЙС',
       title: "Зээлийн салбар",
-      description: "Борлуулалтын багийн найрлагыг оновчлож, багийн бүтээмжийг 2 дахин нэмэгдүүлсэн.",
+      description: "Борлуулалтын багийн найрлагыг оновчлож, багийн бүтээмжилж 2 дахин нэмэгдүүлсэн.",
       metric: "2x багийн бүтээмж",
       icon: TrendingUp
     }
@@ -60,17 +60,28 @@ export function CaseStudiesPage() {
   return (
     <div className="min-h-screen pt-20">
       {/* HERO */}
-      <section className="bg-white py-20">
-        <div className="max-w-[1280px] mx-auto px-6">
+      <section className="bg-white py-20 relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-full lg:w-[50%] h-full pointer-events-none">
+          <img 
+            src="/9.jpg" 
+            alt="Монгол менежерийн дүр төрх" 
+            className="w-full h-full object-cover object-center opacity-40"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+              maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)'
+            }}
+          />
+        </div>
+
+        <div className="max-w-[1280px] mx-auto px-6 relative z-10">
           <div className="flex items-center gap-2 mb-4 text-[#E63995]">
-            
             <span className="font-semibold text-xs tracking-[0.15em] uppercase">СУДАЛГАА</span>
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold text-[#1A0F3E] mb-6 max-w-4xl">
             Монгол менежерийн дүр төрх-2026
           </h1>
           <p className="text-xl text-[#6B6485] max-w-3xl leading-relaxed">
-            МОНГОЛ МЕНЕЖЕРИЙН ДҮР ТӨРХ” судалгааг 5 жилийн хугацаанд 1,033 менежерийн онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг олон улсын "Central Test - CTPI" аргачлалаар тодорхойлсон бодит датад тулгуурлан  боловсруулсан юм.
+            МОНГОЛ МЕНЕЖЕРИЙН ДҮР ТӨРХ” судалгааг 5 жилийн хугацаанд 1,033 менежерийн онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг олон улсын "Central Test - CTPI" аргачлалаар тодорхойлсон бодит датад тулгуурлан боловсруулсан юм.
           </p>
         </div>
       </section>
@@ -79,15 +90,37 @@ export function CaseStudiesPage() {
       <section className="bg-[#FAFAFC] py-6 sticky top-20 z-40 border-b border-[#EBE7F4]">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="flex flex-wrap items-center gap-4">
-            {/* Status Tabs */}
             <div className="flex gap-2">
               {['Идэвхтэй кейс', 'Дууссан кейс'].map((tab) => (
-                null
+                <button
+                  key={tab}
+                  onClick={() => setActiveFilter(tab)}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                    activeFilter === tab
+                      ? 'bg-[#5B3FBC] text-white'
+                      : 'bg-white border border-[#EBE7F4] text-[#6B6485] hover:bg-[#FAFAFC]'
+                  }`}
+                >
+                  {tab}
+                </button>
               ))}
             </div>
 
-            {/* Industry Filter */}
-            
+            <div className="flex flex-wrap gap-2 ml-auto">
+              {industries.map((ind) => (
+                <button
+                  key={ind}
+                  onClick={() => setIndustryFilter(ind)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    industryFilter === ind
+                      ? 'bg-[#E63995] text-white'
+                      : 'bg-white border border-[#EBE7F4] text-[#6B6485] hover:bg-[#FAFAFC]'
+                  }`}
+                >
+                  {ind}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -132,7 +165,6 @@ export function CaseStudiesPage() {
       <section className="bg-[#E9E2FA] py-24">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="flex items-center gap-2 mb-8 text-[#5B3FBC]">
-            
             <span className="font-semibold text-xs tracking-[0.15em] uppercase">Судалгаа</span>
           </div>
 
@@ -149,8 +181,6 @@ export function CaseStudiesPage() {
               <p className="text-[#6B6485] mb-6 leading-relaxed">
                 Тус судалгаа нь 5 жилийн хугацаанд (2020–2025), нийт 1,033 менежерийг хамруулан олон улсад хүлээн зөвшөөрөгдсөн «Central Test — CTPI» аргачлалаар: Менежерийн бие хүний онцлог шинж чанар (4 бүлэг, 19 үзүүлэлт) Сэтгэлгээний болон ажиллах хэв маяг 9 бүлгийн 59 зөөлөн ур чадвар 7 төрлийн менежерийн хэв маяг— зэргийг шинжлэх ухааны үндэслэлтэйгээр тодорхойлсон.
               </p>
-
-              
 
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center">
