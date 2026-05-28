@@ -97,9 +97,9 @@ export function HowItWorksPage() {
   ];
 
   const comparisonTraditional = [
-    "Текст хайлт (keyword matching)",
+    "Текст, түлхүүр үгээр хайлт хийдэг (keyword matching)",
     "Контекстгүй хариу",
-    "Hallucination өндөр",
+    "Зохиомол хариулт өгөх магадлал өндөр",
     "Гүехэн insight",
   ];
 
@@ -166,9 +166,9 @@ export function HowItWorksPage() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]"
               >
-                GraphRAG-ийн{" "}
+                TALENT AI{" "}
                 <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
-                  дөрвөн багана
+                  гэж юу вэ?
                 </span>
               </motion.h1>
               <motion.p
@@ -177,9 +177,7 @@ export function HowItWorksPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl text-white/70 max-w-2xl leading-relaxed mb-10"
               >
-                Хиймэл оюун ухаант систем хэрхэн ажилладгийг,
-                яагаад уламжлалт LLM-ээс илүү оновчтой хариулт
-                өгдгийг шинжлэх ухааны үндэслэлтэйгээр тайлбарлая.
+                Central Test-ийн бүх мэдлэгийн сан, дата, тест тус бүрийн Technical Manual (Техник зааварчилгаа) зэрэгт тулгуурлан GraphRAG технологиор баяжуулан бүтээсэн систем юм. Энэ нь хэрэглэгчид хамгийн чанартай мэдээллийг олгох Хиймэл оюун ухаант зөвлөхийн үүрэг гүйцэтгэнэ. 
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -191,7 +189,7 @@ export function HowItWorksPage() {
                   href="#pillars"
                   className="group bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-pink-500/30"
                 >
-                  Дөрвөн баганыг үзэх
+                  Central Test сэтгэл зүйн  тест үнэлгээнд хамрагдах
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
@@ -217,8 +215,8 @@ export function HowItWorksPage() {
                 <div className="space-y-6">
                   {[
                     { num: "04", label: "Тулгуур багана" },
-                    { num: "06+", label: "Тест мэдлэгийн эх сурвалж" },
-                    { num: "0%", label: "Hallucination түвшин" },
+                    { num: "012+", label: "Тест мэдлэгийн эх сурвалж" },
+                    { num: "0%", label: "Зохиомол хариулт өгөхгүй" },
                   ].map((item, i) => (
                     <motion.div
                       key={i}
@@ -248,10 +246,10 @@ export function HowItWorksPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             <AnimatedStat value="100" suffix="%" label="Эх сурвалжтай" />
             <div className="py-12 px-8">
-              <AnimatedStat value="4" label="Багана" />
+              <AnimatedStat value="12" label="Сэтгэл зүйн тест үнэлгээ" />
             </div>
             <div className="py-12 px-8">
-              <AnimatedStat value="∞" label="Зангилаа" />
+              <AnimatedStat value="∞" label="Онлайн орчинд ашиглах боломж" />
             </div>
             <div className="py-12 px-8">
               <AnimatedStat value="24" suffix="/7" label="Шинэчлэлт" />
@@ -279,7 +277,7 @@ export function HowItWorksPage() {
                 >
                   {/* Text column */}
                   <div
-                    className={`lg:col-span-6 ${
+                    className={`lg:col-span-12 ${
                       !isEven ? "lg:order-2" : ""
                     }`}
                   >
@@ -368,20 +366,20 @@ export function HowItWorksPage() {
           >
             <Quote className="w-16 h-16 text-[#E63995] mx-auto mb-8 opacity-50" />
             <p className="text-3xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-8">
-              "Энэ системийн{" "}
+              "Talent AI{" "}
               <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
-                ялгаа
+                нь
               </span>{" "}
-              нь зөвхөн{" "}
+              зөвхөн{" "}
               <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
-                баталгаажсан эх сурвалжаас
+                баталгаажсан эх сурвалж Central Test-ийн дата өгөгдөл, мэдлэгийн сангаас
               </span>{" "}
               хариу өгдөг — зохиомол үг хэлдэггүйд оршино."
             </p>
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-[2px] bg-[#E63995]" />
               <p className="text-sm text-white/60 uppercase tracking-widest">
-                UMC Talent AI · GraphRAG architecture
+                UMC Talent AI · 
               </p>
               <div className="w-12 h-[2px] bg-[#E63995]" />
             </div>
