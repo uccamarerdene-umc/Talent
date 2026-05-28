@@ -47,7 +47,6 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/70">
               <li><Link to="/about" className="hover:text-[#E63995] transition-colors">Бидний тухай</Link></li>
               <li><Link to="/case-studies" className="hover:text-[#E63995] transition-colors">Кейс судалгаа</Link></li>
-              <li><Link to="/insights" className="hover:text-[#E63995] transition-colors">Insights</Link></li>
               <li><Link to="/contact" className="hover:text-[#E63995] transition-colors">Холбоо барих</Link></li>
             </ul>
           </div>
