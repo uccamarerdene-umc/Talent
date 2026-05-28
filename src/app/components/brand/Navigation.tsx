@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
-import { Star, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,18 +18,22 @@ export function Navigation() {
 
   const menuItems = [
     { label: 'Үйлчилгээ', path: '/services', hasMegaMenu: true },
-    { label: 'Хэрхэн ажилладаг', path: '/how-it-works' },
     { label: 'Бидний тухай', path: '/about' },
     { label: 'Судалгаа', path: '/case-studies' },
-    { label: 'Insights', path: '/insights' },
     { label: 'Холбоо барих', path: '/contact' },
   ];
 
-  const services = [
-    { title: 'Сонгон шалгаруулалт', desc: 'AI дээр суурилсан нэр дэвшигчдийн үнэлгээ' },
-    { title: 'Авьяасын менежмент', desc: 'Ур чадварын хөгжлийн хяналт' },
-    { title: 'Багийн динамик', desc: 'Багийн найрлагын оновчлол' },
-    { title: 'Хөгжлийн замнал', desc: 'Ажил мэргэжлийн төлөвлөлт' },
+  // Mega menu: үйлчилгээ + хэрхэн ажилладаг хоёр баганаар
+  const megaServices = [
+    { title: 'Сонгон шалгаруулалт', desc: 'AI дээр суурилсан нэр дэвшигчдийн үнэлгээ', anchor: '#service-1' },
+    { title: 'Talent Management', desc: 'Ур чадварын хөгжлийн хяналт', anchor: '#service-2' },
+    { title: 'Багийн динамик', desc: 'Багийн найрлагын оновчлол', anchor: '#service-3' },
+    { title: 'Хөгжлийн боломж', desc: 'Ажил мэргэжлийн төлөвлөлт', anchor: '#service-4' },
+  ];
+
+  const megaTech = [
+    { title: 'Хэрхэн ажилладаг', desc: 'GraphRAG-ийн дөрвөн багана', anchor: '#how' },
+    { title: 'Харьцуулалт', desc: 'Уламжлалт AI vs Talent AI', anchor: '#how' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -45,7 +49,6 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            
             <span
               className={`text-xl font-bold tracking-wide transition-colors ${
                 isScrolled || !isHomePage ? 'text-[#1A0F3E]' : 'text-white'
@@ -78,21 +81,57 @@ export function Navigation() {
                   {item.hasMegaMenu && <ChevronDown className="w-4 h-4" />}
                 </Link>
 
-                {/* Mega Menu */}
+                {/* Mega Menu — Үйлчилгээ + Технологи 2 баганаар */}
                 {item.hasMegaMenu && showMegaMenu && (
-                  <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-xl p-8 grid grid-cols-2 gap-6">
-                    {services.map((service, idx) => (
+                  <div className="absolute top-full left-0 mt-2 w-[820px] bg-white rounded-2xl shadow-xl p-8 grid grid-cols-2 gap-8">
+                    {/* Үйлчилгээ багана */}
+                    <div>
+                      <div className="text-xs font-semibold tracking-[0.15em] uppercase text-[#E63995] mb-4 pb-2 border-b border-[#EBE7F4]">
+                        Үйлчилгээ
+                      </div>
+                      <div className="space-y-1">
+                        {megaServices.map((s, idx) => (
+                          <Link
+                            key={idx}
+                            to={`/services${s.anchor}`}
+                            className="block p-3 rounded-lg hover:bg-[#FAFAFC] transition-colors group"
+                          >
+                            <h4 className="font-semibold text-[#1A0F3E] mb-0.5 group-hover:text-[#E63995]">
+                              {s.title}
+                            </h4>
+                            <p className="text-sm text-[#6B6485]">{s.desc}</p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Технологи багана */}
+                    <div>
+                      <div className="text-xs font-semibold tracking-[0.15em] uppercase text-[#E63995] mb-4 pb-2 border-b border-[#EBE7F4]">
+                        Технологи
+                      </div>
+                      <div className="space-y-1">
+                        {megaTech.map((s, idx) => (
+                          <Link
+                            key={idx}
+                            to={`/services${s.anchor}`}
+                            className="block p-3 rounded-lg hover:bg-[#FAFAFC] transition-colors group"
+                          >
+                            <h4 className="font-semibold text-[#1A0F3E] mb-0.5 group-hover:text-[#E63995]">
+                              {s.title}
+                            </h4>
+                            <p className="text-sm text-[#6B6485]">{s.desc}</p>
+                          </Link>
+                        ))}
+                      </div>
+                      {/* CTA дотор mega menu */}
                       <Link
-                        key={idx}
-                        to={`/services#service-${idx + 1}`}
-                        className="p-4 rounded-lg hover:bg-[#FAFAFC] transition-colors group"
+                        to="/services#how"
+                        className="mt-4 inline-flex items-center gap-2 text-[#E63995] font-semibold text-sm hover:gap-3 transition-all"
                       >
-                        <h4 className="font-semibold text-[#1A0F3E] mb-1 group-hover:text-[#E63995]">
-                          {service.title}
-                        </h4>
-                        <p className="text-sm text-[#6B6485]">{service.desc}</p>
+                        Бүх технологийг үзэх →
                       </Link>
-                    ))}
+                    </div>
                   </div>
                 )}
               </div>
