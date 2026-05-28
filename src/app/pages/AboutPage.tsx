@@ -167,7 +167,7 @@ export function AboutPage() {
                   {[
                     { num: '10+', label: 'Жилийн туршлага' },
                     { num: '50+', label: 'Үйлчилүүлэгч байгууллага' },
-                    { num: '1000+', label: 'Менежер дамжсан' },
+                    { num: '1000+', label: 'Гүйцэтгэх удирдлагын манлайлалын ур чадварыг хөгжүүлэх сургалт' },
                   ].map((item, i) => (
                     <motion.div
                       key={i}
@@ -330,7 +330,7 @@ export function AboutPage() {
                 href="/services"
                 className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30"
               >
-                Үйлчилгээ үзэх
+                Холбоо барих
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -339,7 +339,7 @@ export function AboutPage() {
               <div className="text-8xl lg:text-9xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-4">
                 <CountUp end={50} suffix="+" />
               </div>
-              <div className="text-xl text-white/80">Байгууллагад үйлчилж байна</div>
+              <div className="text-xl text-white/80">Хамтрагч байгууллага</div>
               <div className="text-sm text-white/40 mt-2">2015 оноос хойш</div>
             </div>
           </motion.div>
@@ -357,12 +357,12 @@ export function AboutPage() {
             className="text-center mb-16"
           >
             <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
-              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ТҮҮХ</span>
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">History</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
               Бидний{' '}
               <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                түүх
+                тухай
               </span>
             </h2>
           </motion.div>
