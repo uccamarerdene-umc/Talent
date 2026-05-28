@@ -116,7 +116,7 @@ export function HomePage() {
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>GRAPHRAG · HR INTELLIGENCE</span>
+                <span>GRAPHRAG · Байгууллагын хүний нөөцийн туслагч</span>
               </motion.div>
 
               <motion.h1
@@ -157,14 +157,14 @@ export function HomePage() {
                   href="#chat"
                   className="group bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2A1466] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-pink-500/30"
                 >
-                  Чат руу орох
+                  Таlent AI турших
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
                   href="#video"
                   className="group bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all flex items-center gap-2"
                 >
-                  ▶ 60-секундийн видео
+                  ▶ Talent AI ашиглах гарын авлага татаж авах
                 </a>
               </motion.div>
             </div>
@@ -208,17 +208,17 @@ export function HomePage() {
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-1">
                     <CountUp end={100} suffix="%" />
                   </div>
-                  <div className="text-sm text-white/60">Баталгаажсан Central Test эх сурвалж</div>
+                  <div className="text-sm text-white/60">Баталгаажсан Central Test-ийн эх сурвалж</div>
                 </div>
                 <div className="py-8 px-8">
                   <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent mb-1">
                     AI
                   </div>
-                  <div className="text-sm text-white/60">GraphRAG контекст ойлгогч</div>
+                  <div className="text-sm text-white/60">Мэдлэгийн сан</div>
                 </div>
                 <div className="py-8 px-8">
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-1">∞</div>
-                  <div className="text-sm text-white/60">Ур чадварын мэдлэгийн зангилаа</div>
+                  <div className="text-sm text-white/60">Мэдлэгийн graph</div>
                 </div>
               </div>
             </div>
@@ -232,8 +232,8 @@ export function HomePage() {
           <SectionHeader
             eyebrowNumber="01"
             eyebrowText="ҮЙЛЧИЛГЭЭ"
-            title="Дөрвөн чиглэлээр ажилладаг"
-            subtitle="Сэтгэл зүйн дата танай HR-ын стратегийн суурь болж чадна"
+            title="Talent AI давуу тал"
+            subtitle="Сэтгэл зүйн тест үнэлгээний үр дүн таны хүний нөөцийн туслах"
           />
 
           {/* Bento grid — нэг том карт + 3 жижиг */}
@@ -255,7 +255,7 @@ export function HomePage() {
                   <div className="text-7xl italic text-white/20 font-bold mb-4">A</div>
                   <h3 className="text-3xl font-bold text-white mb-3">Сонгон шалгаруулалт</h3>
                   <p className="text-white/70 leading-relaxed max-w-md">
-                    AI дээр суурилсан нэр дэвшигчдийн үнэлгээ, психологийн профайл, ажилд тохирох эсэхийн урьдчилсан таамаглал.
+                    AI дээр суурилсан ажил горилогчийн сэтгэл зүйн тест үнэлгээний үр дүнгээр ажлын байрны нийцлийг урьдчилсан таамаглал.
                   </p>
                 </div>
                 <div className="flex items-center gap-2 text-[#FFD6E8] font-semibold group-hover:gap-3 transition-all">
@@ -266,9 +266,9 @@ export function HomePage() {
 
             {/* Жижиг карт 1 */}
             {[
-              { letter: 'B', title: 'Talent Management', icon: TrendingUp, desc: 'Ур чадварын хөгжлийн хяналт' },
-              { letter: 'C', title: 'Багийн динамик', icon: Users, desc: 'Багийн найрлагын оновчлол' },
-              { letter: 'D', title: 'Хөгжлийн замнал', icon: Briefcase, desc: 'Ажил мэргэжлийн төлөвлөлт' },
+              { letter: 'B', title: 'Talent Management', icon: TrendingUp, desc: 'Байгууллагын стратегийн зорилгод нийцүүлэн talent-ийг олж илрүүлэх, хөгжүүлэх, тогтоон барих цогц үйл ажиллагааг AI-ын тусламжтай ухаалгаар удирдах боломж.' },
+              { letter: 'C', title: 'Багийн динамик', icon: Users, desc: 'Багийн гишүүдийн хоорондын харилцаа, зан төлөв, ажлын уялдаа холбоог өгөгдөлд тулгуурлан шинжилж, хамтын ажиллагааны үр бүтээмжийг нэмэгдүүлэх арга' },
+              { letter: 'D', title: 'Хөгжлийн замнал', icon: Briefcase, desc: 'Ажилтны ур чадварын түвшин болон карьерын зорилгод тулгуурлан, түүнийг дараагийн шатанд гаргах сургалт, хөгжлийн алхмуудыг AI-ын тусламжтай, санал болгож буй хувийн төлөвлөгөө' },
             ].map(({ letter, title, icon: Icon, desc }, idx) => (
               <motion.div
                 key={letter}
@@ -304,7 +304,7 @@ export function HomePage() {
           <SectionHeader
             eyebrowNumber="02"
             eyebrowText="ХЭРХЭН АЖИЛЛАДАГ"
-            title="GraphRAG ажиллах гурван алхам"
+            title="TALENT AI ажиллах гурван алхам"
             centered
           />
 
@@ -355,17 +355,17 @@ export function HomePage() {
             <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
               <div className="lg:col-span-3">
                 <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                  БАНК
+                  CENTRAL TEST
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                  Монголын томоохон банк{' '}
+                  Сэтгэл зүйн шинжлэх ухаанаар баталгаажсан{' '}
                   <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent">
-                    85% илүү оновчтой
+                    Central Test
                   </span>{' '}
-                  хөлслөлт хийсэн
+                  Сэтгэл зүйн тест, үнэлгээ
                 </h2>
                 <p className="text-white/70 mb-8 leading-relaxed text-lg">
-                  Talent AI ашиглаж нэр дэвшигчдийн psychological profile-тай үндэслэн ажлын байранд таарах эсэхийг урьдчилан таамаглаж, сургалтын хөрөнгө оруулалтыг оновчтой болгосон.
+                  Америкийн сэтгэл судлалын холбоо (APA), Британийн сэтгэл зүйн нийгэмлэг (BPS) болон Олон улсын шалгалтын комисс (ITC)-с тогтоосон сэтгэл зүйн үнэлгээний баталгаажуулалтын стандартуудыг баримталдаг.Хувь хүний зан төлөв, хандлага, ур чадвар, чадамж,  мэргэжлийн чиг баримжаа, сэдэлжүүлэгч хүчин зүйл гэх мэтийг тодорхойлдог сэтгэл зүйн тест үнэлгээний олон улсын систем юм.
                 </p>
                 <a href="/case-studies" className="group inline-flex items-center gap-2 text-[#FFD6E8] font-semibold hover:gap-3 transition-all">
                   Дэлгэрэнгүй унших <ArrowRight className="w-5 h-5" />
@@ -374,9 +374,9 @@ export function HomePage() {
               <div className="lg:col-span-2">
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 text-center">
                   <div className="text-7xl lg:text-8xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-2">
-                    <CountUp end={85} suffix="%" />
+                    <CountUp end={40000} suffix="дата" />
                   </div>
-                  <div className="text-white/70">илүү оновчтой хөлслөлт</div>
+                  <div className="text-white/70">2015 оноос хойш Central Test сэтгэл зүйн тест үнэлгээнд хамрагдсан бодит дата өгөгдөлд суурилсан</div>
                 </div>
               </div>
             </div>
