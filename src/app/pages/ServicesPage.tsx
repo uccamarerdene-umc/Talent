@@ -157,7 +157,7 @@ export function ServicesPage() {
       ],
       icon: Search,
       // Зургийн холбоосыг найдвартай ажиллах Unsplash холбоосоор солив
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop",
+      image: "/10.png", 
     },
     {
       number: "02",
@@ -169,7 +169,7 @@ export function ServicesPage() {
         "Ажилтнуудын хөгжүүлэх шаардлагатай ур чадвар, чадамжийг тодорхойлж, байгууллагын зорилготой уялдсан хөгжлийн төлөвлөгөө боловсруулахад дэмжлэг үзүүлнэ.",
       ],
       icon: TrendingUp,
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=800&fit=crop",
+      image: "/2.jpg", 
     },
     {
       number: "03",
@@ -181,7 +181,7 @@ export function ServicesPage() {
         "Харилцааны шинжилгээ хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Users,
-      image: "https://images.unsplash.com/photo-1531535934202-f0d444388fc2?w=800&h=800&fit=crop",
+      image: "/14.png",
     },
     {
       number: "04",
@@ -193,7 +193,7 @@ export function ServicesPage() {
         "Хувь хүний карьер хөгжлийн төлөвлөгөө гаргахад дэмжлэг үзүүлнэ.",
       ],
       icon: Briefcase,
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=800&fit=crop",
+      image: "/7.jpg", 
     },
   ];
 
@@ -204,7 +204,7 @@ export function ServicesPage() {
       title: "Central Test өгөгдлийн суурь",
       description: "Зөвхөн баталгаажсан Central Test-ийн дата, баримт бичгийг эх сурвалж болгон ашигладаг. Зохиомол хариултыг бүрэн арилгана.",
       icon: Database,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=1000&fit=crop",
+      image: "/13.png",
     },
     {
       number: "02",
@@ -220,7 +220,7 @@ export function ServicesPage() {
       title: "Context-aware retrieval",
       description: "Хайлтын цаад утга санаа, нөхцөл байдлыг харгалзан хамгийн оновчтой үр дүнг гаргаж ирэх технологи.",
       icon: Brain,
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=1000&fit=crop",
+      image: "/15.png",
     },
     {
       number: "04",
