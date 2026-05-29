@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView, useScroll } from "framer-motion"; // Найдвартай импорт руу шилжүүлэв
+import { motion, useInView, useScroll } from "framer-motion";
 import { TestimonialCarousel } from "../components/brand/TestimonialCarousel";
 import { CTABlock } from "../components/brand/CTABlock";
 import {
@@ -87,7 +87,7 @@ export function ServicesPage() {
     },
     {
       code: "BIG FIVE",
-      title: "Зан төлвийн тест",
+      title: "Зан төлвйийн тест",
       description: "Хувь хүний 5 үндсэн зан төлвийг (нээлттэй сэтгэлгээ уран сэтгэмж, нягт нямбай байдал, нийтэч эрч хүчтэй байдал, бусдыг ойлгох байдал, сэтгэл хөдлөлийн тэнцвэртэй байдал) тодорхойлно.",
       tag: "ЗАН ТӨЛӨВ",
       image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=1000&fit=crop",
@@ -156,7 +156,8 @@ export function ServicesPage() {
         "Дата үндэслэлтэй сонголт хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Search,
-      image: "/images/services/recruitment.jpg",
+      // Зургийн холбоосыг найдвартай ажиллах Unsplash холбоосоор солив
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop",
     },
     {
       number: "02",
@@ -168,7 +169,7 @@ export function ServicesPage() {
         "Ажилтнуудын хөгжүүлэх шаардлагатай ур чадвар, чадамжийг тодорхойлж, байгууллагын зорилготой уялдсан хөгжлийн төлөвлөгөө боловсруулахад дэмжлэг үзүүлнэ.",
       ],
       icon: TrendingUp,
-      image: "/images/services/talent-management.jpg",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=800&fit=crop",
     },
     {
       number: "03",
@@ -180,7 +181,7 @@ export function ServicesPage() {
         "Харилцааны шинжилгээ хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Users,
-      image: "/images/services/team-dynamic.jpg",
+      image: "https://images.unsplash.com/photo-1531535934202-f0d444388fc2?w=800&h=800&fit=crop",
     },
     {
       number: "04",
@@ -192,7 +193,7 @@ export function ServicesPage() {
         "Хувь хүний карьер хөгжлийн төлөвлөгөө гаргахад дэмжлэг үзүүлнэ.",
       ],
       icon: Briefcase,
-      image: "/images/services/learning-development.jpg",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=800&fit=crop",
     },
   ];
 
@@ -274,10 +275,11 @@ export function ServicesPage() {
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="text-5xl lg:text-[5rem] font-bold text-white tracking-tight leading-[1.04] max-w-5xl mb-10">
             CENTRAL TEST {" "}
-            <span className="text-[#FFD6E8]">Тохирох ажилд нь зөв хүнийг</span>
+            {/* block класс нэмж доош шилжүүлсэн ба налуу зураасыг цэвэрлэв */}
+            <span className="text-[#FFD6E8] block mt-2">Тохирох ажилд нь зөв хүнийг</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-xl lg:text-2xl text-white/70 max-w-3xl leading-relaxed font-light mb-12">
-            \"Central Test\" нь ажилтны зан төлөв, хандлага, чадамж, ур чадвар, сэдэлжүүлэлт, сэтгэлгээ ба ажлын хэв маягийг шинжлэх ухаанд суурилсан сэтгэл зүйн тестээр хэмжих замаар тодорхойлж, байгууллагын хүний нөөцийн сонгон шалгаруулалт, хөгжүүлэлт болон стратегийн шийдвэр гаргалтыг бодит өгөгдөлд тулгуурлан дэмжих цогц шийдэл юм.
+            "Central Test" нь ажилтны зан төлөв, хандлага, чадамж, ур чадвар, сэдэлжүүлэлт, сэтгэлгээ ба ажлын хэв маягийг шинжлэх ухаанд суурилсан сэтгэл зүйн тестээр хэмжих замаар тодорхойлж, байгууллагын хүний нөөцийн сонгон шалгаруулалт, хөгжүүлэлт болон стратегийн шийдвэр гаргалтыг бодит өгөгдөлд тулгуурлан дэмжих цогц шийдэл юм.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-wrap items-center gap-8">
             <a href="#chat" className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30">
@@ -443,7 +445,7 @@ export function ServicesPage() {
               бүтээсэн.
             </h2>
             <p className="text-xl text-white/70 leading-relaxed font-light max-w-3xl">
-              2015 оноос хойш Монгол хүмүүсийг Central Test-ийн сэтгэл зүйн тест үнэлгээнд хамруулсан, 40,000 дата, тест бүрийн Technical Manual-ыг GraphRAG технологиор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгдөг систем юм.
+              2015 оноос хойш Монгол хүмүүсийг Central Test-ийн сэтгэл зүйн тест үнэлгээнд хамруулсан, 40,000 дата, тест бүрийн Technical Manual-ыг GraphRAG технологияор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгдөг сисмем юм.
             </p>
           </div>
         </div>
@@ -486,7 +488,6 @@ export function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                {/* Хоосон холбоосыг бичвэр болон сумаар баяжуулж сайжруулав */}
                 <a href="#chat" className="group inline-flex items-center gap-2 text-[#E63995] font-semibold hover:text-[#2A1466] transition-all">
                   <span>Анализ хийлгэх</span>
                   <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -556,7 +557,7 @@ export function ServicesPage() {
                 Уламжлалт LLM
               </div>
               <h3 className="text-2xl font-bold text-[#1A0F3E] mb-8">
-                Хязгаарлагдмал арга
+                Хягзаарлагдмал арга
               </h3>
               <ul className="space-y-5">
                 {comparisonTraditional.map((item, idx) => (
@@ -617,9 +618,6 @@ export function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <TestimonialCarousel />
-      <CTABlock />
     </div>
   );
 }
