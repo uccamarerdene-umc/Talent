@@ -80,44 +80,44 @@ export function ServicesPage() {
   const centralTestPortfolio = [
     {
       code: "CTPI-R",
-      title: "Менежерийн профайл",
-      description: "Сайн менежерийн 19 хувийн шинж чанарыг шинжилж, удирдагчид хэрхэн боддог, ажилладаг, янз бүрийн нөхцөл байдалд хариу үзүүлдгийн бүрэн профайл өгнө.",
+      title: "Менежерийн тест",
+      description: "Менежерийн тест нь 19 үзүүлэлтээр бие хүний онцлон шинж, зан төлөв, хандлага, 9 бүлгийн 59 ур чадвар, удирдлагын чадамж, сэтгэлгээний ба ажиллах хэв маяг зэргийг өргөн хүрээнд үнэлж тодорхойлно.",
       tag: "УДИРДЛАГА",
       image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&h=1000&fit=crop",
     },
     {
       code: "BIG FIVE",
       title: "Зан төлвийн тест",
-      description: "Хувь хүний 5 үндсэн зан төлвийн талыг (нээлттэй байдал, зохион байгуулалт, гадагшаа чиглэсэн, эв найрамдал, мэдрэмж) хэмжиж, дэлхийд хүлээн зөвшөөрөгдсөн жишиг.",
+      description: "Хувь хүний 5 үндсэн зан төлвийг  (нээлттэй сэтгэлгээ уран сэтгэмж, нягт нямбай байдал, нийтэч эрч хүчтэй байдал, бусдыг ойлгох байдал, сэтгэл хөдлөлийн тэнцвэртэй байдал) тодорхойлно.",
       tag: "ЗАН ТӨЛӨВ",
       image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=1000&fit=crop",
     },
     {
       code: "EMOTION 2.1",
-      title: "Сэтгэлийн хөдлөл",
+      title: "Сэтгэл хөдлөлөө удирдах оюуны чадамжийн тест",
       description: "Daniel Goleman-ы онол дээр суурилан сэтгэл хөдлөл болон нийгмийн чадварын 15 хүчин зүйлийг хэмжиж, EQ-ийн нарийн зураглал өгнө.",
       tag: "EQ",
       image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=1000&fit=crop",
     },
     {
       code: "MOTIVATION+",
-      title: "Ажлын урам зориг",
-      description: "Хүний ажил дээрх эрч хүчийг хөдөлгөдөг хөдөлгүүрийг ойлгож, ажил мэргэжлийн оролцоо болон тогтвортой ажиллах хүчин зүйлийг тогтооно.",
+      title: "Сэдэлжүүлэгч хүчин зүйлийг тодорхойлох тест",
+      description: "Ажлын байранд гүйцэтгэл, оролцоонд чухал сэдэл өгөх 15 хүчин зүйлийг үнэлдэг. Тестийг хоёр хувилбараар авах боломжтой: 15 хүчин зүйлийг үнэлэх-Сэдэл, мөн үнэлэгдсэн хүчин зүйл тус бүрийн сэтгэл ханамжийн түвшинг илэрхийлдэг.",
       tag: "УРАМ ЗОРИГ",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1000&fit=crop",
     },
     {
-      code: "AVATAR",
-      title: "Зан төлвийн харилцаа",
-      description: "Хувь хүний зан төлөв ажилтны зан үйл, багийн динамикт хэрхэн нөлөөлдгийг тодорхойлно. Багийн доторх харилцааг сайжруулна.",
-      tag: "БАГИЙН ДИНАМИК",
+      code: "VOCATION",
+      title: "Ажил мэргэжлийн сонирхол карьерийн чиг баримжаа",
+      description: "Ажил мэргэжлийн сонирхол, карьерын чиг баримжааг тодорхойлох тест нь ажил мэргэжлийн сонирхол, карьерын чиг баримжаа, өөрт тохирох мэргэжлийн нийцлийг олход туслана",
+      tag: "ХУВИЙН СОНИРХОЛ",
       image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=1000&fit=crop",
     },
     {
-      code: "SMART GAME",
-      title: "Танин мэдэхүйн чадвар",
-      description: "30 секундийн дотор логик харилцааг тодорхойлох чадварыг хэмждэг хурдны танин мэдэхүйн тоглоом. Шалгалтад тохиромжтой.",
-      tag: "ТАНИН МЭДЭХҮЙ",
+      code: "PROFESSIONAL PROFILE",
+      title: "Ажилтны хандлага ур чадварын тест",
+      description: "Ажилтны хандлага ур чадварын тест нь Central Test-ээс боловсруулсан сэтгэл зүйн тест бөгөөд ажлын орчинд зан төлөв болон сэдэлжүүлэлтэд нөлөөлдөг хувь хүний онцлогийг 14 эсрэгцсэн хэмжээсээр шинжилдэг хэрэгсэл юм.",
+      tag: "АЖИЛТАН",
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=1000&fit=crop",
     },
   ];
@@ -125,23 +125,22 @@ export function ServicesPage() {
   const centralValues = [
     {
       icon: Microscope,
-      title: "Шинжлэх ухааны суурь",
-      description: "23 жилийн судалгаа, психометрик ба зан үйлийн шинжлэх ухаанд тулгуурласан баталгаажсан үнэлгээний загвар. Үр дүн бүр найдвартай, мөшгилөгдөх.",
+      title: "Шинжлэх ухаанаар баталгаажсан сэтгэл зүйн тест",
+      description: "Олон жилийн судалгааны үр дүнд бий болсон Америкийн сэтгэл судлалын холбоо APA, Британий сэтгэл зүйн нийгэмлэг BPS болон Олон улсын сэтгэл зүйн тестийн комисс ITC тогтоосон сэтгэл зүйн тестийн баталгаажуулалтын стандартыг мөрддөг.",
     },
     {
       icon: Sparkles,
-      title: "Хүний төлөөх технологи",
-      description: "AI, NLP, дата майнинг, predictive matching — хамгийн сүүлийн үеийн технологи. Алгоритмууд тунгалаг, тайлбарлагдах, хар хайрцаг биш.",
+      title: "Технологи болон инноваци",
+      description: "Central test-ийн сэтгэл зүйн тестүүд нь сэтгэл зүйн үнэлгээний стандарт, өгөгдлийн аюулгүй байдлыг хатуу мөрдөж, шинэлэг орчин, орчин үеийн аргуудыг ашиглан бүтээсэн.",
     },
     {
       icon: Users,
-      title: "Бүх хүнд зориулсан туршлага",
-      description: "HR мэргэжилтэн ч, ажил горилогч ч хэрэглэхэд хялбар. Цэвэрхэн интерфэйс, ойлгомжтой замнал, шууд хэрэглэх боломж.",
-    },
-    {
+      title: "Чанартай дэмжлэг",
+      description: "Орчин үеийн шийдлүүдтэй хослуулан дэлхий дахинд хүлээн зөвшөөрөгдсөн чанартай үйлчилгээ үзүүлдэг. Мөн хүний нөөцийн сорилтуудад тохирсон, үйлчлүүлэгчдийн хэрэгцээнд нийцсэн сургалт зөвлөгөөг санал болгдог.",
+   {
       icon: Heart,
       title: "Ёс зүйн үүрэг",
-      description: "Bias бууруулах, GDPR нийцэл, шударга үнэлгээ, загварын тунгалаг байдал. EcoVadis 2025-ийн хүлээн зөвшөөрөл.",
+      description: "EcoVadis 2025-аар баталгаажсан найдвартай, хэвшмэл ойлголтоос (Bias) ангид, бодит өгөгдөлд суурилсан шийдвэр гаргахад тусладаг.",
     },
   ];
 
@@ -149,11 +148,11 @@ export function ServicesPage() {
     {
       number: "01",
       title: "Сонгон шалгаруулалт",
-      description: "Central Test-ийн олон улсын сэтгэл зүйн тест үнэлгээний үр дүнг GraphRAG AI-аар тайлбарлаж, ажил горилогчийн ажлын байранд нийцэх эсэхийг богино хугацаанд мэдэх боломжтой.",
+      description: "Central Test-ийн олон улсын сэтгэл зүйн тест үнэлгээний үр дүн, дата өгөгдөлийг GraphRAG AI-аар тайлбарлаж, ажил горилогчийн ажлын байранд нийцэх эсэхийг богино хугацаанд мэдэх боломжтой.",
       bullets: [
         "Ажил горилогчийн тест үнэлгээний үр дүн, тайлбар",
         "Ажлын байрны ур чадварын шаардлагатай харьцуулалт",
-        "Өрөөсгөл биш үндэслэлтэй сонголт хийх боломж",
+        "Дата үндэслэлтэй сонголт хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Search,
       image: "/1.png",
@@ -165,31 +164,31 @@ export function ServicesPage() {
       bullets: [
         "Зан төлөв, хандлага, ур чадварын үзүүлэлт",
         "Байгууллагын хөгжлийн төлөвлөгөө",
-        "Big Five-д үндэслэсэн learning style таних",
+        "Ажилтнуудын хөгжүүлэх шаардлагатай ур чадвар, чадамжийг тодорхойлж, байгууллагын зорилготой уялдсан хөгжлийн төлөвлөгөө боловсруулахад дэмжлэг үзүүлнэ.",
       ],
       icon: TrendingUp,
       image: "/2.jpg",
     },
     {
       number: "03",
-      title: "Багийн динамик шинжилгээ",
+      title: "Багийн уур амьсгал",
       description: "Багийн гишүүдийн сэтгэл зүйн тест үнэлгээний үр дүнд хамтын ажиллагааны асуудлыг урьдчилан таамаглаж сайжруулна.",
       bullets: [
-        "Багийн гишүүдийг оновчтой сонгох",
+        "Багийн гишүүдийн ур чадварын ялгаатай байдал, хөгжлийн хэрэгцээг тодорхойлон, хамтын гүйцэтгэлийг сайжруулах стратегийг төлөвлөх зөвлөмж өгнө.",
         "Зөрчилдөөний урьдчилсан таамаглал",
-        "Харилцааны шинжилгээ хийх боломжтой",
+        "Харилцааны шинжилгээ хийх боломжыг нэмэгдүүлнэ",
       ],
       icon: Users,
       image: "/3.jpg",
     },
     {
       number: "04",
-      title: "Хөгжлийн боломж",
+      title: "Сургалт хөгжил",
       description: "Сэтгэл зүйн тест үнэлгээний үр дүн, хувь хүний онцлогт тохирсон карьер хөгжлийн төлөвлөгөө, зөвлөмж өгнө.",
       bullets: [
-        "Career path mapping",
-        "Амжилтын төлөвлөгөө",
-        "Нөөц боломжийг тодорхойлох",
+        "Ажилтнуудын ур чадварыг хөгжүүлэх урт хугацааны хөгжлийн шийдлийг тодорхойлно.",
+        "Ажилтнуудын хэрэгцээ, ур чадварын түвшинд тохирсон сургалт, хөгжлийн хөтөлбөрийг оновчтой төлөвлөх боломжийг нэмэгдүүлнэ",
+        "Хувь хүний карьерь хөгжлийн төлөвлөгөө гаргахад дэмжлэг үзүүлнэ",
       ],
       icon: Briefcase,
       image: "/4.jpg",
@@ -209,7 +208,7 @@ export function ServicesPage() {
       number: "02",
       tag: "МЭДЛЭГИЙН СҮЛЖЭЭ",
       title: "Knowledge Graph",
-      description: "Тест үнэлгээ, ажлын байр, зан үйлийн хоорондын харилцааг graph бүтцээр илэрхийлж, гүн контекст ойлголт өгдөг.",
+      description: "Тест үнэлгээ, ажлын байр, зан үйлийн хоорондын харилцааг graph бүтцээр илэрхийлж, хариулт өгдөг.",
       icon: Network,
       image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=1000&fit=crop",
     },
@@ -232,17 +231,17 @@ export function ServicesPage() {
   ];
 
   const comparisonTraditional = [
-    "Текст хайлт (keyword matching)",
-    "Контекстгүй хариу",
-    "Hallucination өндөр",
-    "Гүехэн insight",
+    "Текстэд суурилсан хайлт (keyword matching)",
+    "Контекстгүй, тусгаарлагдмал хариу",
+    "Хуурамж мэдээлэл үүсгэх магадлал өндөр",
+    "Shallow insight-бэлэн текстэд тулгуурласан хариулт",
   ];
 
   const comparisonTalentAI = [
     "Мэдлэгийн сүлжээ (knowledge graph)",
-    "Холболттой зөвлөмж",
-    "Эх сурвалжтай хариулт",
-    "Гүн шинжилгээ",
+    "Уялдаа холбоо бүхий зөвлөмж",
+    "Баталгаатай эх сурвалжтай,баримтжуулсан хариулт",
+    "Гүнзгий аналитик",
   ];
 
   const advantages = [
@@ -250,8 +249,8 @@ export function ServicesPage() {
     { letter: "B", title: "Контекст ойлголт", desc: "GraphRAG технологи", icon: Target },
     { letter: "C", title: "Шийдвэр хурдасгах", desc: "Түргэн шуурхай хариулт", icon: Zap },
     { letter: "D", title: "Skill Mapping", desc: "Ур чадварын зураглал", icon: TrendingUp },
-    { letter: "E", title: "Цаг хэмнэх", desc: "HR багийн ажлын цагийг 70% хэмнэнэ", icon: CheckCircle2 },
-    { letter: "F", title: "24/7 боломжтой", desc: "Хаанаас ч асууж болно", icon: CheckCircle2 },
+    { letter: "E", title: "Цаг хэмнэх", desc: "Хүний нөөцийн багийн ажлын цагийг 70% хэмнэнэ", icon: CheckCircle2 },
+    { letter: "F", title: "24/7 боломжтой", desc: "Онлайн орчинд, хэзээ ч хаанаас ч хэрэглэх боломжтой", icon: CheckCircle2 },
   ];
 
   return (
@@ -269,19 +268,19 @@ export function ServicesPage() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="text-5xl lg:text-[5rem] font-bold text-white tracking-tight leading-[1.04] max-w-5xl mb-10">
-            23 жилийн психометрик туршлага.{" "}
-            <span className="text-[#FFD6E8]">Хиймэл оюун ухаанаар хүчирхэгжсэн.</span>
+            CENTRAL TEST.{" "}
+            <span className="text-[#FFD6E8]">Тохирох ажилд нь зөв хүнийг.</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-xl lg:text-2xl text-white/70 max-w-3xl leading-relaxed font-light mb-12">
-            Talent AI нь олон улсад хүлээн зөвшөөрөгдсөн Central Test-ийн бүх мэдлэгийн сан, баталгаажсан өгөгдөл, тест бүрийн Technical Manual дээр тулгуурлан GraphRAG технологиор бүтээгдсэн хиймэл оюун ухаант зөвлөх.
+            "Central Test" нь ажилтны зан төлөв, хандлага, чадамж, ур чадвар, сэдэлжүүлэлт, сэтгэлгээ ба ажлын хэв маягийг шинжлэх ухаанд суурилсан сэтгэл зүйн тестээр хэмжих замаар тодорхойлж, байгууллагын хүний нөөцийн сонгон шалгаруулалт, хөгжүүлэлт болон стратегийн шийдвэр гаргалтыг бодит өгөгдөлд тулгуурлан дэмжих цогц шийдэл юм.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-wrap items-center gap-8">
             <a href="#chat" className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30">
-              Чат туршиж үзэх
+              Тalent AI турших
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#tests" className="group inline-flex items-center gap-3 text-white border-b-2 border-[#E63995] pb-2 font-semibold hover:gap-5 transition-all">
-              Тестүүдтэй танилцах
+              Тест өгөх
               <ArrowRight className="w-5 h-5 text-[#E63995] group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
@@ -294,14 +293,14 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Central Test тоогоор</SectionLabel>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Дэлхийн хэмжээний итгэмжлэгдсэн үнэлгээний платформ
+              Хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, датад тулгуурлан явуулахад тусална.
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-            <AnimatedStat value="23" label="Жилийн психометрик туршлага" />
-            <AnimatedStat value="30" suffix="M+" label="Хийгдсэн үнэлгээ" />
-            <AnimatedStat value="4500" label="Дэлхийн хэрэглэгч" />
-            <AnimatedStat value="92" suffix="%" label="Сэтгэл хангалуун үйлчлүүлэгч" />
+            <AnimatedStat value="11" label="Жилийн туршлага" />
+            <AnimatedStat value="40" suffix="К+" label="Тест үнэлгээнд хамрагдагсад" />
+            <AnimatedStat value="50" label="Харилцагч байгууллага" />
+            <AnimatedStat value="96" suffix="%" label="Сэтгэл ханамж" />
           </div>
         </div>
       </section>
@@ -316,8 +315,8 @@ export function ServicesPage() {
             <div className="lg:col-span-8">
               <p className="text-2xl lg:text-3xl text-[#1A0F3E] leading-snug font-light tracking-tight mb-10">
                 Central Test бол{" "}
-                <span className="font-semibold">олон улсын психометрик үнэлгээний шилдэг шийдэл</span>{" "}
-                нийлүүлэгч — байгууллага, хувь хүмүүсийг бүрэн чадавхиа нээх, хөгжүүлэхэд тусалдаг. 30,000 гаруй олон улсын судлаачдын сүлжээтэй, 4 үе шаттай шинжлэх ухааны баталгаажуулалт хийдэг.
+                <span className="font-semibold">олон улсын сэтгэл зүйн тест, үнэлгээний шийдэл</span>{" "}
+                нийлүүлэгч — байгууллага болон хувь хүний сонгон шалгаруулалт, карьерын менежмент, багийн уур амьсгал, сургалт хөгжил, өөрийн хөгжлийн шийдвэрийг бодит өгөгдөлд суурилан гаргахад туслах сэтгэл зүйн тест үнэлгээ.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center gap-3 bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl p-4">
@@ -351,13 +350,13 @@ export function ServicesPage() {
       <section id="tests" className="bg-white py-24">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="mb-16">
-            <SectionLabel>Тестийн портфолио</SectionLabel>
+            <SectionLabel>Тестүүд</SectionLabel>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
               <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-                Central Test-ийн баталгаажсан тестүүд
+                Сэтгэл зүйн тест үнэлгээ
               </h2>
               <p className="text-[#6B6485] text-lg max-w-md leading-relaxed">
-                Хувь хүний шинж чанар, сэдэлжүүлэлт, танин мэдэхүйн чадварыг тал бүрээс нь хэмждэг тестүүд.
+                Олон улсад баталгаажсан сэтгэл зүйн тестийн үр дүн, өгөгдөлд суурилсан шийдвэрээр тохирох ажилд нь зөв хүнийг зөв сонгож, зөв хөгжүүлээрэй.
               </p>
             </div>
           </div>
@@ -394,7 +393,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Үндсэн зарчмууд</SectionLabel>
             <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Юунд итгэдэг вэ
+              Үнэт зүйл
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -435,11 +434,11 @@ export function ServicesPage() {
             </div>
             <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-8">
               Central Test-ийн өгөгдөл дээр GraphRAG AI-ыг нэмж бид{" "}
-              <span className="text-[#FFD6E8] italic">Монголын анхны хиймэл оюун ухаант HR зөвлөхийг</span>{" "}
+              <span className="text-[#FFD6E8] italic">Монголын анхны хиймэл оюун ухаант TALENT AI зөвлөхийг</span>{" "}
               бүтээсэн.
             </h2>
             <p className="text-xl text-white/70 leading-relaxed font-light max-w-3xl">
-              Central Test-ийн 23 жилийн судалгаа, 30 сая үнэлгээний дата, тест бүрийн Technical Manual-ыг GraphRAG технологиор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгдөг систем юм.
+              2015 оноос хойш Монгол хүмүүсийг Central Test-ийн сэтгэл зүйн тест үнэлгээнд хамруулсан, 40000 дата, тест бүрийн Technical Manual-ыг GraphRAG технологиор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгдөг систем юм.
             </p>
           </div>
         </div>
@@ -450,7 +449,7 @@ export function ServicesPage() {
         <div className="max-w-[1280px] mx-auto px-6 mb-16">
           <SectionLabel>Үйлчилгээ</SectionLabel>
           <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-            Talent AI-ын дөрвөн үйлчилгээ
+            Talent AI
           </h2>
         </div>
       </section>
@@ -483,7 +482,6 @@ export function ServicesPage() {
                   ))}
                 </ul>
                 <a href="#chat" className="group inline-flex items-center gap-2 text-[#E63995] font-semibold hover:gap-3 transition-all">
-                  Дэлгэрэнгүй унших
                   <ArrowUpRight className="w-5 h-5" />
                 </a>
               </div>
@@ -503,7 +501,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Технологи</SectionLabel>
             <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              GraphRAG-ийн дөрвөн багана
+              Тalent AI-ийн дөрвөн багана
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -542,7 +540,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Харьцуулалт</SectionLabel>
             <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Уламжлалт AI vs UMC Talent AI
+              Уламжлалт LLM vs UMC Talent AI
             </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
