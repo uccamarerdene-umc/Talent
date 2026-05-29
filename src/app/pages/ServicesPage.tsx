@@ -156,7 +156,7 @@ export function ServicesPage() {
         "Дата үндэслэлтэй сонголт хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Search,
-      image: "/1.png",
+      image: "/images/services/recruitment.jpg",
     },
     {
       number: "02",
@@ -168,7 +168,7 @@ export function ServicesPage() {
         "Ажилтнуудын хөгжүүлэх шаардлагатай ур чадвар, чадамжийг тодорхойлж, байгууллагын зорилготой уялдсан хөгжлийн төлөвлөгөө боловсруулахад дэмжлэг үзүүлнэ.",
       ],
       icon: TrendingUp,
-      image: "/2.jpg",
+      image: "/images/services/talent-management.jpg",
     },
     {
       number: "03",
@@ -180,7 +180,7 @@ export function ServicesPage() {
         "Харилцааны шинжилгээ хийх боломжыг нэмэгдүүлнэ",
       ],
       icon: Users,
-      image: "/3.jpg",
+      image: "/images/services/team-dynamic.jpg",
     },
     {
       number: "04",
@@ -192,7 +192,7 @@ export function ServicesPage() {
         "Хувь хүний карьерь хөгжлийн төлөвлөгөө гаргахад дэмжлэг үзүүлнэ",
       ],
       icon: Briefcase,
-      image: "/4.jpg",
+      image: "/images/services/learning-development.jpg",
     },
   ];
 
@@ -247,7 +247,7 @@ export function ServicesPage() {
 
   const advantages = [
     { letter: "A", title: "Баталгаажсан мэдлэг", desc: "Central Test-ийн дата өгөгдөл дээр суурилсан", icon: CheckCircle2 },
-    { letter: "B", title: "Контекст ойлголт", desc: "GraphRAG технологи", icon: Target },
+    { letter: "B", title: "Контекст ойлголт", desc: "GraphRAG technology", icon: Target },
     { letter: "C", title: "Шийдвэр хурдасгах", desc: "Түргэн шуурхай хариулт", icon: Zap },
     { letter: "D", title: "Skill Mapping", desc: "Ур чадварын зураглал", icon: TrendingUp },
     { letter: "E", title: "Цаг хэмнэх", desc: "Хүний нөөцийн багийн ажлын цагийг 70% хэмнэнэ", icon: CheckCircle2 },
@@ -260,8 +260,13 @@ export function ServicesPage() {
 
       {/* HERO */}
       <section className="relative bg-[#1A0F3E] pt-40 pb-32 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-[#5B3FBC] rounded-full opacity-25 blur-3xl" />
-        <div className="relative max-w-[1280px] mx-auto px-6">
+        {/* Баталгаажуулалтын лого бүхий арын зураг */}
+        <div 
+          className="absolute top-0 right-0 w-[50%] h-full bg-contain bg-right-top bg-no-repeat opacity-20 pointer-events-none mix-blend-lighten hidden lg:block"
+          style={{ backgroundImage: `url('/RIGHT PEOPLE IN THE RIGHT GOALS AT THE RIGHT ROALS (1).png')` }}
+        />
+        
+        <div className="relative max-w-[1280px] mx-auto px-6 z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex items-center gap-3 mb-8">
             <div className="h-px w-12 bg-[#E63995]" />
             <span className="text-[#FFD6E8] text-xs font-semibold tracking-[0.2em] uppercase">
@@ -269,8 +274,8 @@ export function ServicesPage() {
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="text-5xl lg:text-[5rem] font-bold text-white tracking-tight leading-[1.04] max-w-5xl mb-10">
-            CENTRAL TEST.{" "}
-            <span className="text-[#FFD6E8]">Тохирох ажилд нь зөв хүнийг.</span>
+            CENTRAL TEST {" "}
+            <span className="text-[#FFD6E8]">Тохирох ажилд нь зөв хүнийг</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-xl lg:text-2xl text-white/70 max-w-3xl leading-relaxed font-light mb-12">
             "Central Test" нь ажилтны зан төлөв, хандлага, чадамж, ур чадвар, сэдэлжүүлэлт, сэтгэлгээ ба ажлын хэв маягийг шинжлэх ухаанд суурилсан сэтгэл зүйн тестээр хэмжих замаар тодорхойлж, байгууллагын хүний нөөцийн сонгон шалгаруулалт, хөгжүүлэлт болон стратегийн шийдвэр гаргалтыг бодит өгөгдөлд тулгуурлан дэмжих цогц шийдэл юм.
@@ -294,7 +299,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Central Test тоогоор</SectionLabel>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, датад тулгуурлан явуулахад тусална.
+              Хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, дата өгөгдөлд тулгуурлан явуулахад тусална.
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
@@ -316,8 +321,8 @@ export function ServicesPage() {
             <div className="lg:col-span-8">
               <p className="text-2xl lg:text-3xl text-[#1A0F3E] leading-snug font-light tracking-tight mb-10">
                 Central Test бол{" "}
-                <span className="font-semibold">олон улсын сэтгэл зүйн тест, үнэлгээний шийдэл</span>{" "}
-                нийлүүлэгч — байгууллага болон хувь хүний сонгон шалгаруулалт, карьерын менежмент, багийн уур амьсгал, сургалт хөгжил, өөрийн хөгжлийн шийдвэрийг бодит өгөгдөлд суурилан гаргахад туслах сэтгэл зүйн тест үнэлгээ.
+                <span className="font-semibold">хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, датад тулгуурлан явуулахад тусалдаг</span>{" "}
+                Америкийн сэтгэл судлалын холбоо (APA), Британийн сэтгэл судлалын нийгэмлэг (BPS) болон Олон улсын шалгалтын комисс (ITC)-с тогтоосон сэтгэл зүйн үнэлгээний баталгаажуулалтын стандартуудыг баримталдаг.Хувь陼ний зан төлөв, хандлага, ур чадвар, чадамж,  мэргэжлийн чиг баримжаа, сэдэлжүүлэгч хүчин зүйл гэх мэтийг тодорхойлдог сэтгэл зүйн тест үнэлгээний олон улсын систем юм.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="flex items-center gap-3 bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl p-4">
@@ -541,7 +546,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Харьцуулалт</SectionLabel>
             <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Уламжлалт LLM vs UMC Talent AI
+              Уламжлалт LLM vs Talent AI
             </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -617,5 +622,3 @@ export function ServicesPage() {
     </div>
   );
 }
-
-
