@@ -55,7 +55,6 @@ export function CaseStudiesPage() {
       date: '2026.05.20',
       author: 'Talent AI Судалгааны Баг',
       icon: Building2,
-      // Бүтэн дэлгэрэнгүй агуулга (Энд хүссэн хэмжээгээрээ урт текст бичиж болно)
       content: `
         Монгол менежерийн дүр төрх, зан үйлийн онцлогийг тодорхойлох нь өнөөгийн бизнесийн хөгжилд маш чухал нөлөөтэй. 
         Олон зууны турш уламжлагдаж ирсэн нүүдэлчин соёл нь орчин үеийн корпорацийн соёлтой хэрхэн уусэж байгааг энэхүү судалгаа харуулж байна.
@@ -108,29 +107,53 @@ export function CaseStudiesPage() {
     <div className="min-h-screen bg-[#FAFAFC]">
       <ScrollProgress />
 
-      {/* ============ HERO ============ */}
+      {/* ============ HERO (Background зурагтай хэсэг) ============ */}
       <section className="relative bg-[#1A0F3E] pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Арын бүдэгхэн Монгол Менежерийн дүр төрх зураг */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity mix-blend-overlay"
+          style={{ backgroundImage: "url('/9.jpg')" }}
+        />
+        
+        {/* Зургийг тексттэй уусгах зөөлөн Gradient харанхуйлалт */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F3E] via-transparent to-[#1A0F3E]/80" />
+
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#5B3FBC] rounded-full opacity-40 blur-3xl"
+            className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#5B3FBC] rounded-full opacity-30 blur-3xl"
           />
         </div>
 
         <div className="relative max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8">
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
+              >
                 <Sparkles className="w-4 h-4" />
                 <span>СУДАЛГАА БОЛОН НИЙТЛЭЛ</span>
-              </div>
-              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
+              </motion.div>
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]"
+              >
                 Монгол менежерийн <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">дүр төрх — 2026</span>
-              </h1>
-              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-xl text-white/70 max-w-2xl leading-relaxed"
+              >
                 "Монгол менежерийн дүр төрх" судалгааны бодит датад тулгуурлан боловсруулсан мэргэжлийн нийтлэлүүд.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
@@ -143,7 +166,7 @@ export function CaseStudiesPage() {
             {articles.map((article, idx) => (
               <div
                 key={article.id}
-                onClick={() => setSelectedArticle(article)} // Дарж нээх логик
+                onClick={() => setSelectedArticle(article)}
                 className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >
                 <div>
@@ -174,7 +197,6 @@ export function CaseStudiesPage() {
       <AnimatePresence>
         {selectedArticle && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-            {/* Арын бүдгэрүүлсэн дэвсгэр */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -183,14 +205,12 @@ export function CaseStudiesPage() {
               className="fixed inset-0 bg-[#1A0F3E]/60 backdrop-blur-md"
             />
 
-            {/* Нийтлэлийн үндсэн цонх */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col"
             >
-              {/* Цонхны толгой хэсэг */}
               <div className="relative bg-[#1A0F3E] p-6 text-white">
                 <button
                   onClick={() => setSelectedArticle(null)}
@@ -205,7 +225,6 @@ export function CaseStudiesPage() {
                   {selectedArticle.title}
                 </h2>
                 
-                {/* Мета дата */}
                 <div className="flex flex-wrap gap-4 text-xs text-white/60 mt-4 border-t border-white/10 pt-4">
                   <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {selectedArticle.date}</div>
                   <div className="flex items-center gap-1.5"><User className="w-4 h-4" /> {selectedArticle.author}</div>
@@ -213,7 +232,6 @@ export function CaseStudiesPage() {
                 </div>
               </div>
 
-              {/* Нийтлэлийн их бие (Скролл хийгддэг хэсэг) */}
               <div className="p-8 overflow-y-auto bg-white flex-1 text-base text-[#332F43] leading-relaxed whitespace-pre-line">
                 <p className="font-medium text-lg text-[#1A0F3E] mb-4 italic">
                   "{selectedArticle.description}"
