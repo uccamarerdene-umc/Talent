@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
 import { motion, useInView, useScroll, AnimatePresence } from "framer-motion";
-import { TestimonialCarousel } from "../components/brand/TestimonialCarousel";
-import { CTABlock } from "../components/brand/CTABlock";
 import {
   CheckCircle2,
   Search,
@@ -25,11 +23,9 @@ import {
   Award,
   Heart,
   Clock,
-  MessageSquare,
   Languages,
   ChevronLeft,
   BarChart2,
-  Star,
   BookOpen,
   Building2,
 } from "lucide-react";
