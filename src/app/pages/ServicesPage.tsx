@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, useInView, useScroll, AnimatePresence } from "framer-motion";
+import { motion, useInView, useScroll, AnimatePresence } from "motion/react";
 import {
   CheckCircle2,
   Search,
