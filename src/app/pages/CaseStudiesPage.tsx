@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, useInView, useScroll } from 'motion/react';
+import { motion, useInView, useScroll } from 'motion/react';
 import { CTABlock } from '../components/brand/CTABlock';
-import { Building2, Code, Factory, GraduationCap, TrendingUp, ArrowRight, Sparkles, Filter } from 'lucide-react';
+import { Building2, Code, Factory, GraduationCap, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
 
-// Тоо ургах
+// Тоо ургах анимаци
 function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -28,7 +28,7 @@ function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: str
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-// Sticky scroll progress
+// Скролл индикатор
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   return (
@@ -40,67 +40,52 @@ function ScrollProgress() {
 }
 
 export function CaseStudiesPage() {
-  const [activeFilter, setActiveFilter] = useState<'Идэвхтэй кейс' | 'Дууссан кейс'>('Идэвхтэй кейс');
-  const [industryFilter, setIndustryFilter] = useState('Бүгд');
-
-  const caseStudies = [
+  // Нийтлэл болон Судалгааны дата (Шүүлтүүрийн логик ашиглахгүй тул статик массив болгов)
+  const articles = [
     {
-      industry: 'Банк',
-      status: 'ИДЭВХТЭЙ КЕЙС',
+      id: "mongol-manager-identity",
+      category: 'МЕНЕЖМЕНТ СУДАЛГАА',
       title: 'Монгол менежер гэж хэн бэ?',
       description: 'Монгол менежер бол өвөрмөц. Олон зууны нүүдэлчдийн соёлоос уламжилсан уян хатан байдал, тэвчээр, хамтын зорилгод чиглэх чадвар нь өнөөгийн дэлхийн бизнесийн орчинд маш үнэ цэнтэй давуу тал болж байна.',
-      metric: '85%',
-      metricLabel: 'илүү оновчтой хөлслөлт',
+      date: '2026.05.20',
       icon: Building2,
     },
     {
-      industry: 'Дижитал',
-      status: 'ДУУССАН КЕЙС',
+      id: "executive-summary-2026",
+      category: 'ҮЙЛ АЖИЛЛАГАА',
       title: '«EXECUTIVE SUMMIT 2026 – STEPPE MANAGER»',
-      description: 'Багийн динамик шинжилгээгээр хамтын ажиллагааг сайжруулж, turnover 40%-иар бууруулсан.',
-      metric: '40%',
-      metricLabel: 'бага turnover',
+      description: 'Багийн динамик шинжилгээгээр хамтын ажиллагааг сайжруулж, ажилчдын тогтвор суурьшилгүй байдлыг (turnover) 40%-иар бууруулсан кэйс судалгаа.',
+      date: '2026.05.15',
       icon: Code,
     },
     {
-      industry: 'Үйлдвэрлэл',
-      status: 'ИДЭВХТЭЙ КЕЙС',
+      id: "manager-skills-gap",
+      category: 'УР ЧАДВАРЫН ШИНЖИЛГЭЭ',
       title: 'Тал нутгийн менежер танд ямар чадвар дутаж байна вэ?',
-      description: 'Монгол менежерүүдийн ур чадварын ерөнхий дундаж оноо 100-аас 55 оноо буюу хөгжих боломжтой түвшинд үнэлэгдсэн байна. Авьяасын менежментээр ажилчдын skill gap илрүүлж, зорилтот сургалт өгснөөр бүтээмж нэмэгдсэн.',
-      metric: '30%',
-      metricLabel: 'өссөн бүтээмж',
+      description: 'Монгол менежерүүдийн ур чадварын ерөнхий дундаж оноо 100-аас 55 оноо буюу хөгжих боломжтой түвшинд үнэлэгдсэн байна. Авьяасын менежментээр ажилчдын skill gap илрүүлж, зорилтот сургалт өгснөөр бүтээмж нэмэгдсэн үр дүн.',
+      date: '2026.05.10',
       icon: Factory,
     },
     {
-      industry: 'Боловсрол',
-      status: 'ИДЭВХТЭЙ КЕЙС',
-      title: '«EXECUTIVE SUMMIT 2026 – STEPPE MANAGER»',
-      description: 'Удирдлагуудын нэгдсэн уулзалт «STEPPE SOUL, SUSTAINABLE GOAL» уриан доор амжилттай зохион байгуулагдлаа. Тус арга хэмжээнд Монгол Улсын тэргүүлэх компаниудын 200 гаруй захирал, удирдах ажилтан нэгдэн оролцлоо.',
-      metric: '200+',
-      metricLabel: 'захирал оролцсон',
+      id: "steppe-soul-summit",
+      category: 'АРГА ХЭМЖЭЭ',
+      title: '«STEPPE SOUL, SUSTAINABLE GOAL» удирдлагуудын нэгдсэн уулзалт',
+      description: 'Удирдлагуудын нэгдсэн уулзалт амжилттай зохион байгуулагдлаа. Тус арга хэмжээнд Монгол Улсын тэргүүлэх компаниудын 200 гаруй захирал, удирдах ажилтан нэгдэн оролцож, цаашдын чиг хандлагыг хэлэлцэв.',
+      date: '2026.05.02',
       icon: GraduationCap,
     },
     {
-      industry: 'Банк',
-      status: 'ДУУССАН КЕЙС',
-      title: 'Зээлийн салбар',
-      description: 'Борлуулалтын багийн найрлагыг оновчлож, багийн бүтээмжийг 2 дахин нэмэгдүүлсэн.',
-      metric: '2x',
-      metricLabel: 'багийн бүтээмж',
+      id: "sales-team-optimization",
+      category: 'БАТАЛГААЖСАН КЕЙС',
+      title: 'Борлуулалт болон зээлийн салбарын бүтээмжийг оновчлох нь',
+      description: 'Борлуулалтын багийн найрлагыг Central Test оношлогооны тусламжтайгаар зөв зохион байгуулж, багийн ажлын гүйцэтгэл болон бүтээмжийг 2 дахин нэмэгдүүлсэн туршлага.',
+      date: '2026.04.28',
       icon: TrendingUp,
     },
   ];
 
-  const industries = ['Бүгд', 'Банк', 'Дижитал', 'Үйлдвэрлэл', 'Боловсрол'];
-
-  const filteredCases = caseStudies.filter(
-    (cs) =>
-      (activeFilter === 'Идэвхтэй кейс' ? cs.status === 'ИДЭВХТЭЙ КЕЙС' : cs.status === 'ДУУССАН КЕЙС') &&
-      (industryFilter === 'Бүгд' || cs.industry === industryFilter)
-  );
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#FAFAFC]">
       <ScrollProgress />
 
       {/* ============ HERO ============ */}
@@ -135,7 +120,7 @@ export function CaseStudiesPage() {
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>СУДАЛГАА</span>
+                <span>СУДАЛГАА БОЛОН НИЙТЛЭЛ</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -158,7 +143,7 @@ export function CaseStudiesPage() {
               </motion.p>
             </div>
 
-            {/* Right side stat card */}
+            {/* Баруун талын статистик карт */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -193,134 +178,67 @@ export function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* ============ FILTER BAR ============ */}
-      <section className="bg-white sticky top-20 z-40 border-b border-[#EBE7F4] backdrop-blur-md bg-white/95">
-        <div className="max-w-[1280px] mx-auto px-6 py-5">
-          <div className="flex flex-wrap items-center gap-6">
-            {/* Status tabs */}
-            <div className="flex items-center gap-2 bg-[#FAFAFC] p-1 rounded-full">
-              {(['Идэвхтэй кейс', 'Дууссан кейс'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveFilter(tab)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-                    activeFilter === tab
-                      ? 'bg-[#E63995] text-white shadow-md shadow-pink-500/30'
-                      : 'text-[#6B6485] hover:text-[#1A0F3E]'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
+      {/* FILTER BAR ХЭСГИЙГ ХАСАВ (Таны хүсэлтээр Screenshot дээрх хэсгийг бүрэн устгалаа) */}
 
-            {/* Industry filter chips */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <Filter className="w-4 h-4 text-[#6B6485]" />
-              {industries.map((ind) => (
-                <button
-                  key={ind}
-                  onClick={() => setIndustryFilter(ind)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all border ${
-                    industryFilter === ind
-                      ? 'bg-[#1A0F3E] text-white border-[#1A0F3E]'
-                      : 'bg-white text-[#6B6485] border-[#EBE7F4] hover:border-[#E63995] hover:text-[#E63995]'
-                  }`}
-                >
-                  {ind}
-                </button>
-              ))}
-            </div>
-
-            {/* Result count */}
-            <div className="ml-auto text-sm text-[#6B6485]">
-              <span className="font-bold text-[#1A0F3E]">{filteredCases.length}</span> кейс олдсон
+      {/* ============ ARTICLES GRID ============ */}
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="mb-10 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-[#1A0F3E]">Нийтлэгдсэн судалгаа, нийтлэлүүд</h2>
+            <div className="text-sm text-[#6B6485]">
+              Нийт <span className="font-bold text-[#1A0F3E]">{articles.length}</span> материал байна
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ============ CASE GRID ============ */}
-      <section className="bg-[#FAFAFC] py-24">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${activeFilter}-${industryFilter}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredCases.length === 0 ? (
-                <div className="col-span-3 text-center py-16">
-                  <p className="text-[#6B6485]">Энэ ангилалд кейс олдсонгүй.</p>
-                </div>
-              ) : (
-                filteredCases.map((caseStudy, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col"
-                  >
-                    {/* Hover gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#FFD6E8]/0 to-[#FFD6E8]/0 group-hover:from-[#FFD6E8]/10 group-hover:to-transparent transition-all duration-500" />
-
-                    <div className="relative flex flex-col h-full">
-                      {/* Top row */}
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD6E8] to-[#E63995]/30 flex items-center justify-center group-hover:rotate-6 transition-transform">
-                          <caseStudy.icon className="w-6 h-6 text-[#E63995]" />
-                        </div>
-                        <span
-                          className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                            caseStudy.status === 'ИДЭВХТЭЙ КЕЙС'
-                              ? 'bg-[#E63995]/10 text-[#E63995]'
-                              : 'bg-[#E9E2FA] text-[#5B3FBC]'
-                          }`}
-                        >
-                          {caseStudy.status}
-                        </span>
-                      </div>
-
-                      {/* Industry tag */}
-                      <div className="text-xs uppercase tracking-widest text-[#6B6485] mb-2">
-                        {caseStudy.industry}
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-lg font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-tight line-clamp-2">
-                        {caseStudy.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-3 flex-1">
-                        {caseStudy.description}
-                      </p>
-
-                      {/* Metric box */}
-                      <div className="border-t border-[#EBE7F4] pt-4 mb-4 flex items-baseline gap-2">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                          {caseStudy.metric}
-                        </div>
-                        <div className="text-xs text-[#6B6485]">{caseStudy.metricLabel}</div>
-                      </div>
-
-                      {/* CTA */}
-                      <a
-                        href="#"
-                        className="inline-flex items-center gap-2 text-[#E63995] font-semibold text-sm group-hover:gap-3 transition-all"
-                      >
-                        Дэлгэрэнгүй унших <ArrowRight className="w-4 h-4" />
-                      </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {articles.map((article, idx) => (
+              <motion.div
+                key={article.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Дээд талын айкон болон огноо */}
+                  <div className="flex justify-between items-center mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#E63995]/10 flex items-center justify-center group-hover:rotate-6 transition-transform">
+                      <article.icon className="w-6 h-6 text-[#E63995]" />
                     </div>
-                  </motion.div>
-                ))
-              )}
-            </motion.div>
-          </AnimatePresence>
+                    <span className="text-xs font-medium text-[#6B6485] bg-[#FAFAFC] px-3 py-1 rounded-full">
+                      {article.date}
+                    </span>
+                  </div>
+
+                  {/* Ангилал */}
+                  <div className="text-xs font-bold uppercase tracking-widest text-[#E63995] mb-2">
+                    {article.category}
+                  </div>
+
+                  {/* Гарчиг */}
+                  <h3 className="text-xl font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-snug">
+                    {article.title}
+                  </h3>
+
+                  {/* Товч агуулга */}
+                  <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-4">
+                    {article.description}
+                  </p>
+                </div>
+
+                {/* Дэлгэрэнгүй унших холбоос */}
+                <div className="border-t border-[#EBE7F4] pt-4 mt-auto">
+                  <a
+                    href={`/blog/${article.id}`} 
+                    className="inline-flex items-center gap-2 text-[#1A0F3E] group-hover:text-[#E63995] font-semibold text-sm group-hover:gap-3 transition-all"
+                  >
+                    Дэлгэрэнгүй унших <ArrowRight className="w-4 h-4 text-[#E63995]" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -335,12 +253,12 @@ export function CaseStudiesPage() {
             className="mb-12"
           >
             <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
-              <span className="font-semibold text-xs tracking-[0.15em] uppercase">FEATURED</span>
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ОНЦЛОХ СУДАЛГАА</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
-              Гол{' '}
+              Үндсэн{' '}
               <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                судалгаа
+                Тайлан
               </span>
             </h2>
           </motion.div>
@@ -352,7 +270,6 @@ export function CaseStudiesPage() {
             transition={{ duration: 0.8 }}
             className="relative bg-gradient-to-br from-[#1A0F3E] via-[#2A1466] to-[#5B3FBC] rounded-3xl overflow-hidden p-12 lg:p-16"
           >
-            {/* Animated background blobs */}
             <motion.div
               animate={{ x: [0, 60, 0], y: [0, -30, 0] }}
               transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
@@ -372,7 +289,7 @@ export function CaseStudiesPage() {
                 </h2>
 
                 <p className="text-white/70 mb-8 leading-relaxed text-lg">
-                  Тус судалгаа нь 5 жилийн хугацаанд (2020–2025), нийт 1,033 менежерийг хамруулан олон улсад хүлээн зөвшөөрөгдсөн «Central Test — CTPI» аргачлалаар Менежерийн бие хүний онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг шинжлэх ухааны үндэслэлтэйгээр тодорхойлсон.
+                  Тус судалгаа нь 5 жилийн хугацаанд, нийт 1,033 менежерийг хамруулан олон улсад хүлээн зөвшөөрөгдсөн «Central Test — CTPI» аргачлалаар Менежерийн бие хүний онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг шинжлэх ухааны үндэслэлтэйгээр тодорхойлсон.
                 </p>
 
                 <div className="grid grid-cols-2 gap-6 mb-8">
@@ -391,7 +308,7 @@ export function CaseStudiesPage() {
                 </div>
 
                 <a
-                  href="#"
+                  href="/blog/mongol-manager-identity"
                   className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30"
                 >
                   Судалгааны тайлантай танилцах
@@ -399,7 +316,6 @@ export function CaseStudiesPage() {
                 </a>
               </div>
 
-              {/* Big number panel */}
               <div className="lg:col-span-2">
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center">
                   <div className="text-7xl lg:text-8xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-3">
