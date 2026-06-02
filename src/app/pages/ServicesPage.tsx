@@ -120,6 +120,41 @@ export function ServicesPage() {
       tag: "АЖИЛТАН",
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=1000&fit=crop",
     },
+    {
+      code: "ETIX",
+      title: "Ёс зүй, ажлын хариуцлагын тест",
+      description: "Ажил горилогч болон ажилтнуудын ажлын байран дээрх ёс зүйтэй зан үйл, эрсдэлтэй алхмуудыг урьдчилан таамаглах, зан төлөвийн шударга байдлыг үнэлэх тест.",
+      tag: "ЁС ЗҮЙ",
+      image: "/etix.png",
+    },
+    {
+      code: "SALES PROFILE",
+      title: "Борлуулалтын ур чадварын тест",
+      description: "Борлуулалтын чиглэлийн ажилтнуудын харилцааны хэв маяг, ятган үнэмшүүлэх болон хэлцэл хийх чадвар, борлуулалтын талбарт амжилт гаргах нөөц боломжийг үнэлнэ.",
+      tag: "БОРЛУУЛАЛТ",
+      image: "/sales-profile.jpg",
+    },
+    {
+      code: "REASONING SPECIAL",
+      title: "Оюуны чадамж, танин мэдэхүйн тусгай тест",
+      description: "Логик сэтгэлгээ, орон зайн баримжаа болон аналитик чадварыг нарийвчлан хэмжиж, асуудал шийдвэрлэх өндөр түвшний чадамжийг тодорхойлно.",
+      tag: "ОЮУНЫ ЧАДАМЖ",
+      image: "/reasoning-special.png",
+    },
+    {
+      code: "REASONING R",
+      title: "Аналитик ба логик сэтгэлгээний тест",
+      description: "Тоон болон вербаль мэдээлэл дээр үндэслэн дүгнэлт хийх, логик дарааллыг олох, танин мэдэхүйн ерөнхий хурд, оновчтой байдлыг үнэлэх хэрэгсэл.",
+      tag: "СЭТГЭЛГЭЭ",
+      image: "/reasoning-r.jpg",
+    },
+    {
+      code: "ENTREPRENEUR TEST",
+      title: "Бизнес эрхлэх ур чадварын тест",
+      description: "Бизнес сэтгэлгээ, эрсдэл даах чадвар, санаачилгатай байдал болон шинэ төсөл, стартапыг удирдан чиглүүлэх хувь хүний манлайллын чадамжийг тодорхойлно.",
+      tag: "БИЗНЕС ЭРХЛЭЛТ",
+      image: "/entrepreneur.png",
+    },
   ];
 
   const centralValues = [
@@ -156,7 +191,6 @@ export function ServicesPage() {
         "Дата үндэслэлтэй сонголт хийх боломжийг нэмэгдүүлнэ",
       ],
       icon: Search,
-      // Зургийн холбоосыг найдвартай ажиллах Unsplash холбоосоор солив
       image: "/10.png", 
     },
     {
@@ -259,38 +293,44 @@ export function ServicesPage() {
     <div className="min-h-screen bg-white text-[#1A0F3E]">
       <ScrollProgress />
 
-      {/* HERO */}
-      <section className="relative bg-[#1A0F3E] pt-40 pb-32 overflow-hidden">
-        <div 
-          className="absolute top-0 right-0 w-[50%] h-full bg-contain bg-right-top bg-no-repeat opacity-20 pointer-events-none mix-blend-lighten hidden lg:block"
-          style={{ backgroundImage: `url('/RIGHT PEOPLE IN THE RIGHT GOALS AT THE RIGHT ROALS (1).png')` }}
-        />
-        
-        <div className="relative max-w-[1280px] mx-auto px-6 z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex items-center gap-3 mb-8">
-            <div className="h-px w-12 bg-[#E63995]" />
-            <span className="text-[#FFD6E8] text-xs font-semibold tracking-[0.2em] uppercase">
-              Central Test · Talent AI-ийн шинжлэх ухааны суурь
-            </span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="text-5xl lg:text-[5rem] font-bold text-white tracking-tight leading-[1.04] max-w-5xl mb-10">
-            CENTRAL TEST {" "}
-            {/* block класс нэмж доош шилжүүлсэн ба налуу зураасыг цэвэрлэв */}
-            <span className="text-[#FFD6E8] block mt-2">Тохирох ажилд нь зөв хүнийг</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-xl lg:text-2xl text-white/70 max-w-3xl leading-relaxed font-light mb-12">
-            "Central Test" нь ажилтны зан төлөв, хандлага, чадамж, ур чадвар, сэдэлжүүлэлт, сэтгэлгээ ба ажлын хэв маягийг шинжлэх ухаанд суурилсан сэтгэл зүйн тестээр хэмжих замаар тодорхойлж, байгууллагын хүний нөөцийн сонгон шалгаруулалт, хөгжүүлэлт болон стратегийн шийдвэр гаргалтыг бодит өгөгдөлд тулгуурлан дэмжих цогц шийдэл юм.
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-wrap items-center gap-8">
-            <a href="#chat" className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30">
-              Talent AI турших
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#tests" className="group inline-flex items-center gap-3 text-white border-b-2 border-[#E63995] pb-2 font-semibold hover:gap-5 transition-all">
-              Тест өгөх
-              <ArrowRight className="w-5 h-5 text-[#E63995] group-hover:translate-x-1 transition-transform" />
-            </a>
-          </motion.div>
+      {/* TEST PORTFOLIO (Шууд тест үнэлгээнээс эхэлнэ) */}
+      <section id="tests" className="bg-white pt-32 pb-24">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="mb-16">
+            <SectionLabel>Тестүүд</SectionLabel>
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
+                Сэтгэл зүйн тест үнэлгээ
+              </h2>
+              <p className="text-[#6B6485] text-lg max-w-md leading-relaxed">
+                Олон улсад баталгаажсан сэтгэл зүйн тестийн үр дүн, өгөгдөлд суурилсан шийдвэрээр тохирох ажилд нь зөв хүнийг зөв сонгож, зөв хөгжүүлээрэй.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {centralTestPortfolio.map((test, idx) => (
+              <motion.div key={test.code} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: idx * 0.05 }} className="group">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-5">
+                  <img src={test.image} alt={test.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F3E] via-[#1A0F3E]/30 to-transparent" />
+                  <div className="absolute top-5 left-5">
+                    <div className="text-2xl font-bold text-white tracking-tight">{test.code}</div>
+                  </div>
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <span className="text-[#FFD6E8] text-[10px] font-semibold tracking-[0.15em] uppercase">
+                      {test.tag}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-snug">
+                  {test.title}
+                </h3>
+                <p className="text-[#6B6485] text-sm leading-relaxed">
+                  {test.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -300,7 +340,7 @@ export function ServicesPage() {
           <div className="mb-16">
             <SectionLabel>Central Test тоогоор</SectionLabel>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-              Хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, дата өгөгдөлд тулгуурлан явуулахад тусална.
+              Хүний нөөцийн удирдлагыг шинжлэх ухааны үндэслэлтэй, дата өгөгдөлд тулгуурлан явуулахад тусално.
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
@@ -349,47 +389,6 @@ export function ServicesPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TEST PORTFOLIO */}
-      <section id="tests" className="bg-white py-24">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="mb-16">
-            <SectionLabel>Тестүүд</SectionLabel>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-              <h2 className="text-4xl lg:text-6xl font-bold text-[#1A0F3E] tracking-tight leading-tight max-w-3xl">
-                Сэтгэл зүйн тест үнэлгээ
-              </h2>
-              <p className="text-[#6B6485] text-lg max-w-md leading-relaxed">
-                Олон улсад баталгаажсан сэтгэл зүйн тестийн үр дүн, өгөгдөлд суурилсан шийдвэрээр тохирох ажилд нь зөв хүнийг зөв сонгож, зөв хөгжүүлээрэй.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {centralTestPortfolio.map((test, idx) => (
-              <motion.div key={test.code} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: idx * 0.08 }} className="group">
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-5">
-                  <img src={test.image} alt={test.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F3E] via-[#1A0F3E]/30 to-transparent" />
-                  <div className="absolute top-5 left-5">
-                    <div className="text-2xl font-bold text-white tracking-tight">{test.code}</div>
-                  </div>
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <span className="text-[#FFD6E8] text-[10px] font-semibold tracking-[0.15em] uppercase">
-                      {test.tag}
-                    </span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-snug">
-                  {test.title}
-                </h3>
-                <p className="text-[#6B6485] text-sm leading-relaxed">
-                  {test.description}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -445,7 +444,7 @@ export function ServicesPage() {
               бүтээсэн.
             </h2>
             <p className="text-xl text-white/70 leading-relaxed font-light max-w-3xl">
-              2015 оноос хойш Монгол хүмүүсийг Central Test-ийн сэтгэл зүйн тест үнэлгээнд хамруулсан, 40,000 дата, тест бүрийн Technical Manual-ыг GraphRAG технологияор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгдөг сисмем юм.
+              2015 оноос хойш Монгол хүмүүсийг Central Test-ийн сэтгэл зүйн тест үнэлгээнд хамруулсан, 40,000 дата, тест бүрийн Technical Manual-ыг GraphRAG технологияор баяжуулан, монгол хэлээр асуухад баталгаажсан хариулт өгөгдөг сисмем юм.
             </p>
           </div>
         </div>
