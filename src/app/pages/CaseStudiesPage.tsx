@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useInView, useScroll } from 'motion/react';
 import { CTABlock } from '../components/brand/CTABlock';
 import { 
   Building2, Code, Factory, GraduationCap, TrendingUp, 
-  ArrowRight, Sparkles, Filter, X, FileText, CheckCircle2, 
+  ArrowRight, Sparkles, X, FileText, CheckCircle2, 
   ShoppingBag, Send 
 } from 'lucide-react';
 
@@ -37,36 +37,41 @@ function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E63995] via-[#5B3FBC] to-[#E63995] origin-left z-50"
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#560591] via-[#2563EB] to-[#560591] origin-left z-50"
       style={{ scaleX: scrollYProgress }}
     />
   );
 }
 
+interface Article {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  content: string;
+  date: string;
+  metric: string;
+  metricLabel: string;
+  icon: any;
+}
+
 export function CaseStudiesPage() {
   // --- Төлөвүүд (States) ---
-  const [activeFilter, setActiveFilter] = useState<'ИДЭВХТЭЙ КЕЙС' | 'Дууссан кейс'>('ИДЭВХТЭЙ КЕЙС');
-  const [industryFilter, setIndustryFilter] = useState<string>('БҮГД');
-  
-  // Модал цонхны төлөвүүд
-  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [purchaseSubmitted, setPurchaseSubmitted] = useState(false);
 
   // Хүсэлт авах формын дата
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '' });
 
-  const industries = ['БҮГД', 'МЕНЕЖМЕНТ', 'ТЕХНОЛОГИ', 'ҮЙЛДВЭРЛЭЛ', 'БОРЛУУЛАЛТ'];
-
-  // Статик кэйсүүдийн дата
-  const caseStudies = [
+  // Нийтлэлүүдийн дата (Кэйс судалгааг нийтлэл болгон зассан)
+  const articles: Article[] = [
     {
       id: "mongol-manager-identity",
-      status: 'ИДЭВХТЭЙ КЕЙС',
-      industry: 'МЕНЕЖМЕНТ',
       category: 'МЕНЕЖМЕНТ СУДАЛГАА',
       title: 'Монгол менежер гэж хэн бэ?',
       description: 'Монгол менежер бол өвөрмөц. Олон зууны нүүдэлчдийн соёлоос уламжилсан уян хатан байдал, тэвчээр, хамтын зорилгод чиглэх чадвар нь өнөөгийн дэлхийн бизнесийн орчинд маш үнэ цэнтэй давуу тал болж байна.',
+      content: 'Энэхүү судалгаагаар Монгол менежерүүдийн дасан зохицох болон шийдвэр гаргах үйл явцыг олон улсын Central Test — CTPI аргачлалаар нарийвчлан судалсан бөгөөд уян хатан байдал нь дэлхийн дунджаас 15%-иар илүү байгааг тогтоосон. Мөн хамт олныг удирдах, хямралын үед оновчтой шийдвэр гаргах тал дээр өндөр ур чадвартай болох нь харагдсан.',
       date: '2026.05.20',
       metric: '59',
       metricLabel: 'Оношилсон ур чадвар',
@@ -74,11 +79,10 @@ export function CaseStudiesPage() {
     },
     {
       id: "executive-summary-2026",
-      status: 'ИДЭВХТЭЙ КЕЙС',
-      industry: 'ТЕХНОЛОГИ',
-      category: 'ҮЙЛ АЖИЛЛАГАА',
+      category: 'ҮҮРЭГ БА ҮЙЛ АЖИЛЛАГАА',
       title: '«EXECUTIVE SUMMIT 2026 – STEPPE MANAGER»',
       description: 'Багийн динамик шинжилгээгээр хамтын ажиллагааг сайжруулж, ажилчдын тогтвор суурьшилгүй байдлыг (turnover) 40%-иар бууруулсан кэйс судалгаа.',
+      content: 'Байгууллагын соёл болон удирдлагын багийн динамик оношлогоог нэвтрүүлснээр хэлтэс хоорондын үл ойлголцлыг арилгаж, ажилчдын сэтгэл ханамжийг өсгөв. Үр дүнд нь нийт багийн тогтвортой ажиллах дундаж хугацаа уртасч, үргүй зардлыг үлэмж хэмжээгээр бууруулж чадсан байна.',
       date: '2026.05.15',
       metric: '40%',
       metricLabel: 'Turnover Бууралт',
@@ -86,11 +90,10 @@ export function CaseStudiesPage() {
     },
     {
       id: "manager-skills-gap",
-      status: 'ИДЭВХТЭЙ КЕЙС',
-      industry: 'ҮЙЛДВЭРЛЭЛ',
       category: 'УР ЧАДВАРЫН ШИНЖИЛГЭЭ',
       title: 'Тал нутгийн менежер танд ямар чадвар дутаж байна вэ?',
       description: 'Монгол менежерүүдийн ур чадварын ерөнхий дундаж оноо 100-аас 55 оноо буюу хөгжих боломжтой түвшинд үнэлэгдсэн байна. Авьяасын менежментээр ажилчдын skill gap илрүүлж, зорилтот сургалт өгснөөр бүтээмж нэмэгдсэн үр дүн.',
+      content: 'Судалгааны үр дүнгээс харахад менежерүүдэд Стратеги төлөвлөлт болон Сэтгэл хөдлөлийн оюун ухаан (EQ) буюу стресс менежментийн ур чадварууд системтэйгээр хөгжүүлэх шаардлагатай байгаа нь ажиглагдсан. Энэхүү Skill Gap-ийг нөхөх зорилтот хөтөлбөрүүд хэрэгжиж эхэлсэн.',
       date: '2026.05.10',
       metric: '55',
       metricLabel: 'Дундаж Үнэлгээ',
@@ -98,11 +101,10 @@ export function CaseStudiesPage() {
     },
     {
       id: "steppe-soul-summit",
-      status: 'Дууссан кейс',
-      industry: 'МЕНЕЖМЕНТ',
-      category: 'АРГА ХЭМЖЭЭ',
+      category: 'АРГА ХЭМЖЭЭНИЙ ТОЙМ',
       title: '«STEPPE SOUL, SUSTAINABLE GOAL» удирдлагуудын нэгдсэн уулзалт',
       description: 'Удирдлагуудын нэгдсэн уулзалт амжилттай зохион байгуулагдлаа. Тус арга хэмжээнд Монгол Улсын тэргүүлэх компаниудын 200 гаруй захирал, удирдах ажилтан нэгдэн оролцож, цаашдын чиг хандлагыг хэлэлцэв.',
+      content: 'Тус уулзалтаар тогтвортой хөгжлийн зорилтууд болон ирээдүйн хүний нөөцийн чиг хандлагыг хэлэлцсэн бөгөөд Central Test-ийн зүгээс удирдлагын түвшний үнэлгээ, оношлогооны хамгийн сүүлийн үеийн трендүүдийг танилцуулсан үр өгөөжтэй арга хэмжээ боллоо.',
       date: '2026.05.02',
       metric: '200+',
       metricLabel: 'Захирлууд цугласан',
@@ -110,24 +112,16 @@ export function CaseStudiesPage() {
     },
     {
       id: "sales-team-optimization",
-      status: 'Дууссан кейс',
-      industry: 'БОРЛУУЛАЛТ',
-      category: 'БАТАЛГААЖСАН КЕЙС',
+      category: 'БАТАЛГААЖСАН ТОЙМ',
       title: 'Борлуулалт болон зээлийн салбарын бүтээмжийг оновчлох нь',
       description: 'Борлуулалтын багийн найрлагыг Central Test оношлогооны тусламжтайгаар зөв зохион байгуулж, багийн ажлын гүйцэтгэл болон бүтээмжийг 2 дахин нэмэгдүүлсэн туршлага.',
+      content: 'Борлуулалтын ажилтнуудын бие хүний онцлогт тохируулан харилцагчийн төрөл болон чиглэлийг хуваарилж өгснөөр амжилттай хэлцэл хаах магадлал эрс өссөн. Багийн дотоод уур амьсгал сайжирч, богино хугацаанд борлуулалтын төлөвлөгөөг давуулан биелүүлэв.',
       date: '2026.04.28',
       metric: '2x',
       metricLabel: 'Бүтээмжийн Өсөлт',
       icon: TrendingUp,
     },
   ];
-
-  // Шүүлтүүрийн логик
-  const filteredCases = caseStudies.filter((c) => {
-    const matchesStatus = c.status === activeFilter;
-    const matchesIndustry = industryFilter === 'БҮГД' || c.industry === industryFilter;
-    return matchesStatus && matchesIndustry;
-  });
 
   // Форм илгээх функц
   const handlePurchaseSubmit = (e: React.FormEvent) => {
@@ -141,25 +135,25 @@ export function CaseStudiesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC]">
+    <div className="min-h-screen bg-[#FDFBF7]"> {/* Илүү цайвар Cream/Ivory арын дэвсгэр */}
       <ScrollProgress />
 
       {/* ============ HERO ============ */}
-      <section className="relative bg-[#1A0F3E] pt-32 pb-24 overflow-hidden">
+      <section className="relative bg-[#110A26] pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#5B3FBC] rounded-full opacity-40 blur-3xl"
+            className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#560591] rounded-full opacity-30 blur-3xl"
           />
           <motion.div
             animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
             transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute right-1/3 top-1/2 w-[500px] h-[500px] bg-[#E63995] rounded-full opacity-25 blur-3xl"
+            className="absolute right-1/3 top-1/2 w-[500px] h-[500px] bg-[#2563EB] rounded-full opacity-20 blur-3xl"
           />
         </div>
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
             backgroundSize: '60px 60px',
@@ -173,10 +167,10 @@ export function CaseStudiesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#E9E2FA] px-4 py-2 rounded-full text-sm font-medium mb-8"
               >
-                <Sparkles className="w-4 h-4" />
-                <span>СУДАЛГАА БОЛОН НИЙТЛЭЛ</span>
+                <Sparkles className="w-4 h-4 text-[#2563EB]" />
+                <span>СУДАЛГАА БОЛОН НИЙТЛЭЛҮҮД</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -185,7 +179,7 @@ export function CaseStudiesPage() {
                 className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]"
               >
                 Монгол менежерийн{' '}
-                <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
+                <span className="bg-gradient-to-r from-[#E9E2FA] to-[#2563EB] bg-clip-text text-transparent italic">
                   дүр төрх — 2026
                 </span>
               </motion.h1>
@@ -199,7 +193,7 @@ export function CaseStudiesPage() {
               </motion.p>
             </div>
 
-            {/* Баруун талын статистик карт */}
+            {/* Статистик карт */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -207,7 +201,7 @@ export function CaseStudiesPage() {
               className="lg:col-span-5"
             >
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-                <div className="text-sm text-[#FFD6E8] uppercase tracking-widest mb-4">
+                <div className="text-sm text-[#E9E2FA] uppercase tracking-widest mb-4">
                   Судалгааны хүрээ
                 </div>
                 <div className="space-y-6">
@@ -234,118 +228,68 @@ export function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* ============ FILTER BAR ============ */}
-      <section className="bg-white sticky top-0 mountaineer-sticky z-40 border-b border-[#EBE7F4] backdrop-blur-md bg-white/95">
-        <div className="max-w-[1280px] mx-auto px-6 py-5">
-          <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-2 bg-[#FAFAFC] p-1 rounded-full">
-              {(['ИДЭВХТЭЙ КЕЙС', 'Дууссан кейс'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveFilter(tab)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-                    activeFilter === tab
-                      ? 'bg-[#E63995] text-white shadow-md shadow-pink-500/30'
-                      : 'text-[#6B6485] hover:text-[#1A0F3E]'
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
+      {/* ============ ARTICLE GRID (Жагсаалтыг шууд харуулна, Шүүлтүүрийг устгасан) ============ */}
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-6">
+          <div className="mb-10 flex items-center justify-between border-b border-[#EBE7F4] pb-5">
+            <h2 className="text-2xl font-bold text-[#110A26]">Нийтлэгдсэн судалгаа, нийтлэлүүд</h2>
+            <div className="text-sm text-[#6B6485]">
+              Нийт <span className="font-bold text-[#560591]">{articles.length}</span> нийтлэл олдлоо
             </div>
+          </div>
 
-            <div className="flex items-center gap-2 flex-wrap">
-              <Filter className="w-4 h-4 text-[#6B6485]" />
-              {industries.map((ind) => (
-                <button
-                  key={ind}
-                  onClick={() => setIndustryFilter(ind)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all border ${
-                    industryFilter === ind
-                      ? 'bg-[#1A0F3E] text-white border-[#1A0F3E]'
-                      : 'bg-white text-[#6B6485] border-[#EBE7F4] hover:border-[#E63995] hover:text-[#E63995]'
-                  }`}
-                >
-                  {ind}
-                </button>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.map((article, idx) => (
+              <motion.div
+                key={article.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#560591] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#560591]/0 to-[#560591]/0 group-hover:from-[#560591]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
-            <div className="ml-auto text-sm text-[#6B6485]">
-              <span className="font-bold text-[#1A0F3E]">{filteredCases.length}</span> кейс олдсон
-            </div>
+                <div className="relative flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#E9E2FA] to-[#2563EB]/20 flex items-center justify-center group-hover:rotate-6 transition-transform">
+                      <article.icon className="w-6 h-6 text-[#560591]" />
+                    </div>
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#E9E2FA] text-[#560591]">
+                      {article.date}
+                    </span>
+                  </div>
+
+                  <div className="text-xs uppercase tracking-widest text-[#2563EB] font-bold mb-2">{article.category}</div>
+                  <h3 className="text-lg font-bold text-[#110A26] mb-3 group-hover:text-[#560591] transition-colors leading-tight line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-3 flex-1">
+                    {article.description}
+                  </p>
+
+                  <div className="border-t border-[#EBE7F4] pt-4 mb-4 flex items-baseline gap-2">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-[#560591] to-[#2563EB] bg-clip-text text-transparent">
+                      {article.metric}
+                    </div>
+                    <div className="text-xs text-[#6B6485]">{article.metricLabel}</div>
+                  </div>
+
+                  {/* Сонгосон нийтлэлийг унших модал нээх товчлуур */}
+                  <button 
+                    onClick={() => setSelectedArticle(article)}
+                    className="inline-flex items-center gap-2 text-[#560591] font-semibold text-sm group-hover:gap-3 transition-all text-left"
+                  >
+                    Дэлгэрэнгүй унших <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ============ CASE GRID ============ */}
-      <section className="bg-[#FAFAFC] py-24">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${activeFilter}-${industryFilter}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredCases.length === 0 ? (
-                <div className="col-span-3 text-center py-16">
-                  <p className="text-[#6B6485]">Энэ ангилалд кейс олдсонгүй.</p>
-                </div>
-              ) : (
-                filteredCases.map((caseStudy, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.08 }}
-                    className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#FFD6E8]/0 to-[#FFD6E8]/0 group-hover:from-[#FFD6E8]/10 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
-
-                    <div className="relative flex flex-col h-full">
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD6E8] to-[#E63995]/30 flex items-center justify-center group-hover:rotate-6 transition-transform">
-                          <caseStudy.icon className="w-6 h-6 text-[#E63995]" />
-                        </div>
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                          caseStudy.status === 'ИДЭВХТЭЙ КЕЙС' ? 'bg-[#E63995]/10 text-[#E63995]' : 'bg-[#E9E2FA] text-[#5B3FBC]'
-                        }`}>
-                          {caseStudy.status}
-                        </span>
-                      </div>
-
-                      <div className="text-xs uppercase tracking-widest text-[#6B6485] mb-2">{caseStudy.industry}</div>
-                      <h3 className="text-lg font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-tight line-clamp-2">
-                        {caseStudy.title}
-                      </h3>
-                      <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-3 flex-1">
-                        {caseStudy.description}
-                      </p>
-
-                      <div className="border-t border-[#EBE7F4] pt-4 mb-4 flex items-baseline gap-2">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                          {caseStudy.metric}
-                        </div>
-                        <div className="text-xs text-[#6B6485]">{caseStudy.metricLabel}</div>
-                      </div>
-
-                      <a href="#" className="inline-flex items-center gap-2 text-[#E63995] font-semibold text-sm group-hover:gap-3 transition-all">
-                        Дэлгэрэнгүй унших <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </motion.div>
-                ))
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
       {/* ============ FEATURED CASE — STEPPE MANAGER ============ */}
-      <section className="bg-white py-32">
+      <section className="bg-white py-32 border-t border-[#EBE7F4]">
         <div className="max-w-[1280px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -354,13 +298,13 @@ export function CaseStudiesPage() {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
-              <span className="font-semibold text-xs tracking-[0.15em] uppercase">FEATURED CASE</span>
+            <div className="inline-flex items-center gap-2 mb-4 text-[#560591]">
+              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ОНЦЛОХ СУДАЛГАА</span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
-              Гол{' '}
-              <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                судалгаа
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#110A26] tracking-tight">
+              Үндсэн{' '}
+              <span className="bg-gradient-to-r from-[#560591] to-[#2563EB] bg-clip-text text-transparent">
+                тайлан
               </span>
             </h2>
           </motion.div>
@@ -370,12 +314,12 @@ export function CaseStudiesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative bg-gradient-to-br from-[#1A0F3E] via-[#2A1466] to-[#5B3FBC] rounded-3xl overflow-hidden p-12 lg:p-16"
+            className="relative bg-gradient-to-br from-[#110A26] via-[#1E0F42] to-[#560591] rounded-3xl overflow-hidden p-12 lg:p-16"
           >
             <motion.div
               animate={{ x: [0, 60, 0], y: [0, -30, 0] }}
               transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-0 right-0 w-96 h-96 bg-[#E63995] rounded-full opacity-25 blur-3xl"
+              className="absolute top-0 right-0 w-96 h-96 bg-[#2563EB] rounded-full opacity-20 blur-3xl"
             />
 
             <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
@@ -385,7 +329,7 @@ export function CaseStudiesPage() {
                 </div>
                 <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
                   Монгол Менежерийн{' '}
-                  <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
+                  <span className="bg-gradient-to-r from-[#E9E2FA] to-[#2563EB] bg-clip-text text-transparent italic">
                     дүр төрх
                   </span>
                 </h2>
@@ -396,24 +340,26 @@ export function CaseStudiesPage() {
 
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5">
-                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-1">
+                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#E9E2FA] bg-clip-text text-transparent mb-1">
                       <CountUp end={88} suffix="%" />
                     </div>
                     <div className="text-sm text-white/70">Төслийн менежер хэв шинж</div>
                   </div>
                   <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5">
-                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-1">
+                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#E9E2FA] bg-clip-text text-transparent mb-1">
                       <CountUp end={74} suffix="%" />
                     </div>
                     <div className="text-sm text-white/70">Идэвхжүүлэгч менежер хэв шинж</div>
                   </div>
                 </div>
 
-                {/* 🛒 Шинэчлэгдсэн Үйлдлийн Товчлуурууд */}
                 <div className="flex flex-wrap gap-4">
                   <button
-                    onClick={() => setIsReportModalOpen(true)}
-                    className="group inline-flex items-center gap-2 bg-white text-[#1A0F3E] px-6 py-3.5 rounded-full font-semibold hover:bg-[#E63995] hover:text-white transition-all duration-300 shadow-md"
+                    onClick={() => {
+                      // Анхны нийтлэлийг модал дээр шууд нээх
+                      setSelectedArticle(articles[0]);
+                    }}
+                    className="group inline-flex items-center gap-2 bg-white text-[#110A26] px-6 py-3.5 rounded-full font-semibold hover:bg-[#560591] hover:text-white transition-all duration-300 shadow-md"
                   >
                     <FileText className="w-5 h-5" />
                     Судалгаатай танилцах
@@ -421,7 +367,7 @@ export function CaseStudiesPage() {
                   
                   <button
                     onClick={() => setIsPurchaseModalOpen(true)}
-                    className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-6 py-3.5 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/20"
+                    className="group inline-flex items-center gap-2 bg-[#560591] text-white px-6 py-3.5 rounded-full font-semibold hover:bg-white hover:text-[#110A26] transition-all duration-300 shadow-lg shadow-purple-500/25"
                   >
                     <ShoppingBag className="w-5 h-5" />
                     Бүрэн тайлан худалдаж авах
@@ -432,7 +378,7 @@ export function CaseStudiesPage() {
 
               <div className="lg:col-span-2">
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center">
-                  <div className="text-7xl lg:text-8xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-3">
+                  <div className="text-7xl lg:text-8xl font-bold bg-gradient-to-br from-white to-[#E9E2FA] bg-clip-text text-transparent mb-3">
                     <CountUp end={1033} />
                   </div>
                   <div className="text-lg text-white font-semibold uppercase tracking-widest">
@@ -446,34 +392,50 @@ export function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* ============ 📑 МОДАЛ 1: СУДАЛГААНЫ ХУРААНГУЙ ТАНИЛЦУУЛГА ============ */}
+      {/* ============ 📑 МОДАЛ 1: НИЙТЛЭЛИЙН ДЭЛГЭРЭНГҮЙ ЦОНХ ============ */}
       <AnimatePresence>
-        {isReportModalOpen && (
+        {selectedArticle && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setIsReportModalOpen(false)}
-              className="fixed inset-0 bg-[#1A0F3E]/60 backdrop-blur-md" 
+              onClick={() => setSelectedArticle(null)}
+              className="fixed inset-0 bg-[#110A26]/60 backdrop-blur-md" 
             />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-              className="relative bg-white w-full max-w-2xl rounded-3xl p-8 shadow-2xl z-10 max-h-[80vh] overflow-y-auto"
+              className="relative bg-white w-full max-w-2xl rounded-3xl p-8 shadow-2xl z-10 max-h-[85vh] overflow-y-auto"
             >
-              <button onClick={() => setIsReportModalOpen(false)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#1A0F3E]"><X className="w-6 trim" /></button>
-              <div className="flex items-center gap-2 text-[#E63995] font-bold text-xs uppercase mb-3"><Sparkles className="w-4 h-4" /> Судалгааны Хураангуй</div>
-              <h3 className="text-2xl font-bold text-[#1A0F3E] mb-6">Монгол менежерийн дүр төрх судалгааны танилцуулга</h3>
+              <button onClick={() => setSelectedArticle(null)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#110A26]">
+                <X className="w-6 h-6" />
+              </button>
+              
+              <div className="flex items-center gap-2 text-[#2563EB] font-bold text-xs uppercase mb-3">
+                <Sparkles className="w-4 h-4" /> {selectedArticle.category}
+              </div>
+              <h3 className="text-2xl font-bold text-[#110A26] mb-2">{selectedArticle.title}</h3>
+              <div className="text-xs text-[#6B6485] mb-6">Нийтлэгдсэн огноо: {selectedArticle.date}</div>
               
               <div className="space-y-4 text-sm text-[#6B6485] leading-relaxed">
-                <p>Энэхүү судалгаа нь манай улсын бизнесийн салбарт ажиллаж буй дунд болон дээд шатны удирдах ажилтнуудын давуу тал, хөгжүүлэх шаардлагатай ур чадваруудыг нээн илрүүлсэн анхны томоохон хэмжээний дата төсөл юм.</p>
-                <h4 className="font-bold text-[#1A0F3E] text-base mt-4">Гол онцлох олдворууд:</h4>
-                <ul className="list-disc list-inside space-y-2">
-                  <li><strong>Уян хатан байдал:</strong> Олон улсын дунджаас 15%-иар өндөр дасан зохицох чадамжтай.</li>
-                  <li><strong>Сэтгэл хөдлөлийн оюун ухаан (EQ):</strong> Менежерүүдийн хувьд багийн гишүүдийг сонсох болон стресс менежментийн тал дээр системтэй сургалт шаардлагатай байна.</li>
-                  <li><strong>Шийдвэр гаргалт:</strong> Эрсдэлийг тооцоолох чадвар өндөр боловч урт хугацааны стратеги төлөвлөлт сул байна.</li>
-                </ul>
+                <p className="text-base text-[#110A26] font-medium bg-[#FAFAFC] p-4 rounded-2xl border border-[#EBE7F4]">
+                  {selectedArticle.description}
+                </p>
+                <div className="pt-2">
+                  <h4 className="font-bold text-[#110A26] text-base mb-2">Дэлгэрэнгүй агуулга:</h4>
+                  <p>{selectedArticle.content}</p>
+                </div>
+
+                <div className="mt-6 p-4 bg-[#E9E2FA]/30 rounded-2xl flex items-center gap-4">
+                  <div className="text-3xl font-bold text-[#560591]">{selectedArticle.metric}</div>
+                  <div className="text-xs text-[#110A26] font-semibold uppercase tracking-wider">{selectedArticle.metricLabel}</div>
+                </div>
               </div>
-              <div className="mt-8 border-t border-[#EBE7F4] pt-6 flex justify-end">
-                <button onClick={() => { setIsReportModalOpen(false); setIsPurchaseModalOpen(true); }} className="bg-[#E63995] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[#1A0F3E] transition-colors">
+
+              <div className="mt-8 border-t border-[#EBE7F4] pt-6 flex justify-between items-center">
+                <span className="text-xs text-[#6B6485]">Central Test аргачлал дээр суурилсан</span>
+                <button 
+                  onClick={() => { setSelectedArticle(null); setIsPurchaseModalOpen(true); }} 
+                  className="bg-[#560591] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[#2563EB] transition-colors"
+                >
                   Бүрэн тайланг захиалах
                 </button>
               </div>
@@ -489,41 +451,43 @@ export function CaseStudiesPage() {
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setIsPurchaseModalOpen(false)}
-              className="fixed inset-0 bg-[#1A0F3E]/60 backdrop-blur-md" 
+              className="fixed inset-0 bg-[#110A26]/60 backdrop-blur-md" 
             />
             <motion.div 
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 30 }}
               className="relative bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl z-10 overflow-hidden"
             >
-              <button onClick={() => setIsPurchaseModalOpen(false)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#1A0F3E]"><X className="w-5 h-5" /></button>
+              <button onClick={() => setIsPurchaseModalOpen(false)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#110A26]">
+                <X className="w-5 h-5" />
+              </button>
               
               {!purchaseSubmitted ? (
                 <>
-                  <div className="w-12 h-12 bg-[#E63995]/10 rounded-2xl flex items-center justify-center mb-4 text-[#E63995]">
+                  <div className="w-12 h-12 bg-[#E9E2FA] rounded-2xl flex items-center justify-center mb-4 text-[#560591]">
                     <ShoppingBag className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#1A0F3E] mb-2">Бүрэн тайлан захиалах</h3>
+                  <h3 className="text-xl font-bold text-[#110A26] mb-2">Бүрэн тайлан захиалах</h3>
                   <p className="text-sm text-[#6B6485] mb-6">Хүсэлтээ илгээснээр манай борлуулалтын менежер тантай эргэж холбогдон, үнийн санал болон дэлгэрэнгүй мэдээллийг хүргэх болно.</p>
                   
                   <form onSubmit={handlePurchaseSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#1A0F3E] mb-1">Таны Нэр</label>
-                      <input required type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#E63995]" placeholder="Нэрээ оруулна уу" />
+                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Таны Нэр</label>
+                      <input required type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Нэрээ оруулна уу" />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#1A0F3E] mb-1">Утасны дугаар</label>
-                      <input required type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#E63995]" placeholder="Холбоо барих утас" />
+                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Утасны дугаар</label>
+                      <input required type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Холбоо барих утас" />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#1A0F3E] mb-1">Имэйл хаяг</label>
-                      <input required type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#E63995]" placeholder="Имэйл хаягаа оруулна уу" />
+                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Имэйл хаяг</label>
+                      <input required type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Имэйл хаягаа оруулна уу" />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase text-[#1A0F3E] mb-1">Байгууллагын нэр</label>
-                      <input type="text" value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#E63995]" placeholder="Компанийн нэр /заавал биш/" />
+                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Байгууллагын нэр</label>
+                      <input type="text" value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Компанийн нэр /заавал биш/" />
                     </div>
                     
-                    <button type="submit" className="w-full mt-2 bg-[#E63995] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#1A0F3E] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-pink-500/10">
+                    <button type="submit" className="w-full mt-2 bg-[#560591] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#110A26] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-purple-500/10">
                       <Send className="w-4 h-4" /> Хүсэлт илгээх
                     </button>
                   </form>
@@ -533,7 +497,7 @@ export function CaseStudiesPage() {
                   <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h4 className="text-xl font-bold text-[#1A0F3E] mb-2">Хүсэлт амжилттай илгээгдлээ!</h4>
+                  <h4 className="text-xl font-bold text-[#110A26] mb-2">Хүсэлт амжилттай илгээгдлээ!</h4>
                   <p className="text-sm text-[#6B6485]">Манай менежер тантай тун удахгүй холбогдох болно. Баярлалаа.</p>
                 </motion.div>
               )}
@@ -542,7 +506,7 @@ export function CaseStudiesPage() {
         )}
       </AnimatePresence>
 
-      {/* CTA */}
+      {/* CTA Block */}
       <CTABlock />
     </div>
   );
