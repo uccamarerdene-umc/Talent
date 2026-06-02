@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useScroll } from 'motion/react';
+import { motion, AnimatePresence, useInView, useScroll } from 'motion/react';
 import { CTABlock } from '../components/brand/CTABlock';
-import { Building2, Code, Factory, GraduationCap, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
+import { Building2, Code, Factory, GraduationCap, TrendingUp, ArrowRight, Sparkles, X, Calendar, User, BookOpen } from 'lucide-react';
 
 // Тоо ургах анимаци
 function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
@@ -40,7 +40,12 @@ function ScrollProgress() {
 }
 
 export function CaseStudiesPage() {
-  // Нийтлэл болон Судалгааны дата (Шүүлтүүрийн логик ашиглахгүй тул статик массив болгов)
+  // Дэлгэрэнгүй харах нийтлэлийг хадгалах state
+  const [selectedArticle, setSelectedArticle] = useState<any | null>(null);
+
+  // ========================================================
+  // 📝 ЭНДЭХ ТЕКСТҮҮДИЙГ ТА ЧӨЛӨӨТЭЙ EDIT ХИЙЖ БОЛНО
+  // ========================================================
   const articles = [
     {
       id: "mongol-manager-identity",
@@ -48,7 +53,20 @@ export function CaseStudiesPage() {
       title: 'Монгол менежер гэж хэн бэ?',
       description: 'Монгол менежер бол өвөрмөц. Олон зууны нүүдэлчдийн соёлоос уламжилсан уян хатан байдал, тэвчээр, хамтын зорилгод чиглэх чадвар нь өнөөгийн дэлхийн бизнесийн орчинд маш үнэ цэнтэй давуу тал болж байна.',
       date: '2026.05.20',
+      author: 'Talent AI Судалгааны Баг',
       icon: Building2,
+      // Бүтэн дэлгэрэнгүй агуулга (Энд хүссэн хэмжээгээрээ урт текст бичиж болно)
+      content: `
+        Монгол менежерийн дүр төрх, зан үйлийн онцлогийг тодорхойлох нь өнөөгийн бизнесийн хөгжилд маш чухал нөлөөтэй. 
+        Олон зууны турш уламжлагдаж ирсэн нүүдэлчин соёл нь орчин үеийн корпорацийн соёлтой хэрхэн уусэж байгааг энэхүү судалгаа харуулж байна.
+        
+        Үндсэн олдворуудаас дурдвал:
+        1. Уян хатан чанар: Өөрчлөгдөж буй зах зээлийн орчинд маш хурдан дасан зохицож, шийдвэр гаргах чадвар өндөр.
+        2. Стресс менежмент: Хүнд нөхцөл байдалд тэвчээртэй хандаж, гарцыг олж харахдаа гаргууд.
+        3. Хамтын ажиллагаа: Багийн гишүүдийг нэгдсэн зорилго дор зангидах чадвар нь олон улсын дунджаас өвөрмөц онцлогтой байна.
+        
+        Цаашид бид менежерүүдийнхээ энэхүү давуу талыг хөгжүүлж, сул талыг нь системтэйгээр нөхөх шаардлагатай байна.
+      `
     },
     {
       id: "executive-summary-2026",
@@ -56,7 +74,14 @@ export function CaseStudiesPage() {
       title: '«EXECUTIVE SUMMIT 2026 – STEPPE MANAGER»',
       description: 'Багийн динамик шинжилгээгээр хамтын ажиллагааг сайжруулж, ажилчдын тогтвор суурьшилгүй байдлыг (turnover) 40%-иар бууруулсан кэйс судалгаа.',
       date: '2026.05.15',
+      author: 'Бизнес Хөгжлийн Хэлтэс',
       icon: Code,
+      content: `
+        Executive Summit 2026 арга хэмжээний үеэр танилцуулсан "Steppe Manager" кэйс нь практик дээр хэрхэн хүний нөөцийн оновчлол хийснийг харуулсан.
+        
+        Компаниудын дунд тулгардаг хамгийн том асуудал болох ажилчдын тогтвор суурьшилгүй байдлыг (turnover) бууруулахын тулд багийн динамик шинжилгээг ашигласан юм. 
+        Гишүүдийн зан төлөв, сэдэлжүүлэгч хүчин зүйлсийг Central Test-ийн аргачлалаар оношилсны үр дүнд удирдлагын хэв маягийг өөрчилж, үр дүнд нь turnover 40%-иар буурсан байна.
+      `
     },
     {
       id: "manager-skills-gap",
@@ -64,24 +89,19 @@ export function CaseStudiesPage() {
       title: 'Тал нутгийн менежер танд ямар чадвар дутаж байна вэ?',
       description: 'Монгол менежерүүдийн ур чадварын ерөнхий дундаж оноо 100-аас 55 оноо буюу хөгжих боломжтой түвшинд үнэлэгдсэн байна. Авьяасын менежментээр ажилчдын skill gap илрүүлж, зорилтот сургалт өгснөөр бүтээмж нэмэгдсэн үр дүн.',
       date: '2026.05.10',
+      author: 'Сургалт Хөгжлийн Баг',
       icon: Factory,
-    },
-    {
-      id: "steppe-soul-summit",
-      category: 'АРГА ХЭМЖЭЭ',
-      title: '«STEPPE SOUL, SUSTAINABLE GOAL» удирдлагуудын нэгдсэн уулзалт',
-      description: 'Удирдлагуудын нэгдсэн уулзалт амжилттай зохион байгуулагдлаа. Тус арга хэмжээнд Монгол Улсын тэргүүлэх компаниудын 200 гаруй захирал, удирдах ажилтан нэгдэн оролцож, цаашдын чиг хандлагыг хэлэлцэв.',
-      date: '2026.05.02',
-      icon: GraduationCap,
-    },
-    {
-      id: "sales-team-optimization",
-      category: 'БАТАЛГААЖСАН КЕЙС',
-      title: 'Борлуулалт болон зээлийн салбарын бүтээмжийг оновчлох нь',
-      description: 'Борлуулалтын багийн найрлагыг Central Test оношлогооны тусламжтайгаар зөв зохион байгуулж, багийн ажлын гүйцэтгэл болон бүтээмжийг 2 дахин нэмэгдүүлсэн туршлага.',
-      date: '2026.04.28',
-      icon: TrendingUp,
-    },
+      content: `
+        Нийт хамрагдсан менежерүүдийн дунд хийсэн skill gap (ур чадварын зөрүү) шинжилгээгээр ерөнхий дундаж оноо 55 оноотой гарсан. Энэ нь цаашид хөгжих маш том орон зай байгааг илтгэж байна.
+        
+        Менежерүүдэд хамгийн их дутагдаж буй чадамжууд:
+        - Стратеги төлөвлөлт болон урт хугацааны алсын хараа
+        - Сэтгэл хөдлөлийн оюун ухаан (EQ) болон багийн харилцаа
+        - Датанд суурилсан гүйцэтгэлийн үнэлгээ
+        
+        Эдгээр чиглэлээр тусгайлан боловсруулсан зорилтот сургалтуудыг зохион байгуулснаар байгууллагын дундаж бүтээмжийг богино хугацаанд өсгөх боломжтой байна.
+      `
+    }
   ];
 
   return (
@@ -96,112 +116,37 @@ export function CaseStudiesPage() {
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#5B3FBC] rounded-full opacity-40 blur-3xl"
           />
-          <motion.div
-            animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
-            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute right-1/3 top-1/2 w-[500px] h-[500px] bg-[#E63995] rounded-full opacity-25 blur-3xl"
-          />
         </div>
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
 
         <div className="relative max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-7">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
-              >
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8">
                 <Sparkles className="w-4 h-4" />
                 <span>СУДАЛГАА БОЛОН НИЙТЛЭЛ</span>
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]"
-              >
-                Монгол менежерийн{' '}
-                <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
-                  дүр төрх — 2026
-                </span>
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-white/70 max-w-2xl leading-relaxed"
-              >
-                "Монгол менежерийн дүр төрх" судалгааг 5 жилийн хугацаанд 1,033 менежерийн онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг олон улсын Central Test — CTPI аргачлалаар тодорхойлсон бодит датад тулгуурлан боловсруулсан.
-              </motion.p>
-            </div>
-
-            {/* Баруун талын статистик карт */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="lg:col-span-5"
-            >
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-                <div className="text-sm text-[#FFD6E8] uppercase tracking-widest mb-4">
-                  Судалгааны хүрээ
-                </div>
-                <div className="space-y-6">
-                  {[
-                    { num: '1,033', label: 'Менежер хамруулсан' },
-                    { num: '5 жил', label: 'Үргэлжилсэн хугацаа' },
-                    { num: '59', label: 'Зөөлөн ур чадвар' },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                      className="flex items-baseline justify-between border-b border-white/10 pb-4 last:border-0"
-                    >
-                      <div className="text-4xl font-bold text-white">{item.num}</div>
-                      <div className="text-sm text-white/60 text-right max-w-[55%]">{item.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
               </div>
-            </motion.div>
+              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
+                Монгол менежерийн <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">дүр төрх — 2026</span>
+              </h1>
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                "Монгол менежерийн дүр төрх" судалгааны бодит датад тулгуурлан боловсруулсан мэргэжлийн нийтлэлүүд.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FILTER BAR ХЭСГИЙГ ХАСАВ (Таны хүсэлтээр Screenshot дээрх хэсгийг бүрэн устгалаа) */}
-
       {/* ============ ARTICLES GRID ============ */}
       <section className="py-24">
         <div className="max-w-[1280px] mx-auto px-6">
-          <div className="mb-10 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-[#1A0F3E]">Нийтлэгдсэн судалгаа, нийтлэлүүд</h2>
-            <div className="text-sm text-[#6B6485]">
-              Нийт <span className="font-bold text-[#1A0F3E]">{articles.length}</span> материал байна
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article, idx) => (
-              <motion.div
+              <div
                 key={article.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                onClick={() => setSelectedArticle(article)} // Дарж нээх логик
+                className="group relative bg-white border border-[#EBE7F4] rounded-3xl p-6 hover:border-[#E63995] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >
                 <div>
-                  {/* Дээд талын айкон болон огноо */}
                   <div className="flex justify-between items-center mb-5">
                     <div className="w-12 h-12 rounded-2xl bg-[#E63995]/10 flex items-center justify-center group-hover:rotate-6 transition-transform">
                       <article.icon className="w-6 h-6 text-[#E63995]" />
@@ -210,129 +155,77 @@ export function CaseStudiesPage() {
                       {article.date}
                     </span>
                   </div>
-
-                  {/* Ангилал */}
-                  <div className="text-xs font-bold uppercase tracking-widest text-[#E63995] mb-2">
-                    {article.category}
-                  </div>
-
-                  {/* Гарчиг */}
-                  <h3 className="text-xl font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-snug">
-                    {article.title}
-                  </h3>
-
-                  {/* Товч агуулга */}
-                  <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-4">
-                    {article.description}
-                  </p>
+                  <div className="text-xs font-bold uppercase tracking-widest text-[#E63995] mb-2">{article.category}</div>
+                  <h3 className="text-xl font-bold text-[#1A0F3E] mb-3 group-hover:text-[#E63995] transition-colors leading-snug">{article.title}</h3>
+                  <p className="text-[#6B6485] text-sm mb-6 leading-relaxed line-clamp-4">{article.description}</p>
                 </div>
-
-                {/* Дэлгэрэнгүй унших холбоос */}
                 <div className="border-t border-[#EBE7F4] pt-4 mt-auto">
-                  <a
-                    href={`/blog/${article.id}`} 
-                    className="inline-flex items-center gap-2 text-[#1A0F3E] group-hover:text-[#E63995] font-semibold text-sm group-hover:gap-3 transition-all"
-                  >
+                  <span className="inline-flex items-center gap-2 text-[#1A0F3E] group-hover:text-[#E63995] font-semibold text-sm group-hover:gap-3 transition-all">
                     Дэлгэрэнгүй унших <ArrowRight className="w-4 h-4 text-[#E63995]" />
-                  </a>
+                  </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============ FEATURED CASE — STEPPE MANAGER ============ */}
-      <section className="bg-white py-32">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="inline-flex items-center gap-2 mb-4 text-[#E63995]">
-              <span className="font-semibold text-xs tracking-[0.15em] uppercase">ОНЦЛОХ СУДАЛГАА</span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#1A0F3E] tracking-tight">
-              Үндсэн{' '}
-              <span className="bg-gradient-to-r from-[#E63995] to-[#5B3FBC] bg-clip-text text-transparent">
-                Тайлан
-              </span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative bg-gradient-to-br from-[#1A0F3E] via-[#2A1466] to-[#5B3FBC] rounded-3xl overflow-hidden p-12 lg:p-16"
-          >
+      {/* ============ 🌟 ДЭЛГЭРЭНГҮЙ НИЙТЛЭЛ ХАРАХ ЦОНХ (MODAL) ============ */}
+      <AnimatePresence>
+        {selectedArticle && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Арын бүдгэрүүлсэн дэвсгэр */}
             <motion.div
-              animate={{ x: [0, 60, 0], y: [0, -30, 0] }}
-              transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-0 right-0 w-96 h-96 bg-[#E63995] rounded-full opacity-25 blur-3xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedArticle(null)}
+              className="fixed inset-0 bg-[#1A0F3E]/60 backdrop-blur-md"
             />
 
-            <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-              <div className="lg:col-span-3">
-                <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-xs font-semibold mb-6 uppercase tracking-widest">
-                  Steppe Manager
-                </div>
-                <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
-                  Монгол Менежерийн{' '}
-                  <span className="bg-gradient-to-r from-[#FFD6E8] to-[#E63995] bg-clip-text text-transparent italic">
-                    дүр төрх
-                  </span>
-                </h2>
-
-                <p className="text-white/70 mb-8 leading-relaxed text-lg">
-                  Тус судалгаа нь 5 жилийн хугацаанд, нийт 1,033 менежерийг хамруулан олон улсад хүлээн зөвшөөрөгдсөн «Central Test — CTPI» аргачлалаар Менежерийн бие хүний онцлог шинж чанар, сэтгэлгээний болон ажиллах хэв маяг, 9 бүлгийн 59 зөөлөн ур чадварыг шинжлэх ухааны үндэслэлтэйгээр тодорхойлсон.
-                </p>
-
-                <div className="grid grid-cols-2 gap-6 mb-8">
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5">
-                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-1">
-                      <CountUp end={88} suffix="%" />
-                    </div>
-                    <div className="text-sm text-white/70">Төслийн менежер хэв шинж</div>
-                  </div>
-                  <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5">
-                    <div className="text-4xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-1">
-                      <CountUp end={74} suffix="%" />
-                    </div>
-                    <div className="text-sm text-white/70">Идэвхжүүлэгч менежер хэв шинж</div>
-                  </div>
-                </div>
-
-                <a
-                  href="/blog/mongol-manager-identity"
-                  className="group inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#1A0F3E] transition-all duration-300 shadow-lg shadow-pink-500/30"
+            {/* Нийтлэлийн үндсэн цонх */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col"
+            >
+              {/* Цонхны толгой хэсэг */}
+              <div className="relative bg-[#1A0F3E] p-6 text-white">
+                <button
+                  onClick={() => setSelectedArticle(null)}
+                  className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 p-2 rounded-full transition-colors"
                 >
-                  Судалгааны тайлантай танилцах
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-
-              <div className="lg:col-span-2">
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center">
-                  <div className="text-7xl lg:text-8xl font-bold bg-gradient-to-br from-white to-[#FFD6E8] bg-clip-text text-transparent mb-3">
-                    <CountUp end={1033} />
-                  </div>
-                  <div className="text-lg text-white font-semibold uppercase tracking-widest">
-                    Монгол менежер
-                  </div>
-                  <div className="text-sm text-white/60 mt-2">5 жилийн судалгаа</div>
+                  <X className="w-5 h-5" />
+                </button>
+                <span className="text-xs font-bold text-[#FFD6E8] uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full inline-block mb-3">
+                  {selectedArticle.category}
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold pr-10 text-white leading-snug">
+                  {selectedArticle.title}
+                </h2>
+                
+                {/* Мета дата */}
+                <div className="flex flex-wrap gap-4 text-xs text-white/60 mt-4 border-t border-white/10 pt-4">
+                  <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {selectedArticle.date}</div>
+                  <div className="flex items-center gap-1.5"><User className="w-4 h-4" /> {selectedArticle.author}</div>
+                  <div className="flex items-center gap-1.5"><BookOpen className="w-4 h-4" /> 3 мин унших</div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* CTA */}
+              {/* Нийтлэлийн их бие (Скролл хийгддэг хэсэг) */}
+              <div className="p-8 overflow-y-auto bg-white flex-1 text-base text-[#332F43] leading-relaxed whitespace-pre-line">
+                <p className="font-medium text-lg text-[#1A0F3E] mb-4 italic">
+                  "{selectedArticle.description}"
+                </p>
+                <hr className="border-[#EBE7F4] my-4" />
+                {selectedArticle.content}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <CTABlock />
     </div>
   );
