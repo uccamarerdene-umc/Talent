@@ -326,7 +326,7 @@ export function ServicesPage() {
       description:
         "Менежерийн тест нь 19 үзүүлэлтээр бие хүний онцлог шинж, зан төлөв, хандлага, 9 бүлгийн 59 ур чадвар, удирдлагын чадамж, сэтгэлгээний ба ажлын хэв маягийг өргөн хүрээнд үнэлж тодорхойлно.",
       tag: "УДИРДЛАГА",
-      image:
+      image: "/23.png",
         "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&h=1000&fit=crop",
       questions: "160",
       duration: "35–45",
@@ -403,7 +403,7 @@ export function ServicesPage() {
       description:
         "Daniel Goleman-ы онол дээр суурилан сэтгэл хөдлөл болон нийгмийн чадварын 15 хүчин зүйлийг хэмжиж, EQ-ийн нарийн зураглал өгнө.",
       tag: "EQ",
-      image:
+      image: "/20.png",
         "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&h=1000&fit=crop",
       questions: "100",
       duration: "20–25",
@@ -442,7 +442,7 @@ export function ServicesPage() {
       description:
         "Ажлын байранд гүйцэтгэл, оролцоонд чухал сэдэл өгөх 15 хүчин зүйлийг үнэлдэг. Сэдэл болон сэтгэл ханамжийн хоёр хувилбараар авна.",
       tag: "УРАМ ЗОРИГ",
-      image:
+      image: "/14.png",
         "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=1000&fit=crop",
       questions: "75",
       duration: "15–20",
@@ -520,7 +520,7 @@ export function ServicesPage() {
       description:
         "Ажлын орчинд зан төлөв болон сэдэлжүүлэлтэд нөлөөлдөг хувь хүний онцлогийг 14 эсрэгцсэн хэмжээсээр шинжилдэг хэрэгсэл.",
       tag: "АЖИЛТАН",
-      image:
+      image: "/21.png",
         "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=1000&fit=crop",
       questions: "112",
       duration: "12–15",
