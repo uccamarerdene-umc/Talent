@@ -116,7 +116,7 @@ export function HomePage() {
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-[#FFD6E8] px-4 py-2 rounded-full text-sm font-medium mb-8"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>GRAPHRAG · Байгууллагын хүний нөөцийн туслагч</span>
+                <span>GRAPHRAG ·  Байгууллагын хүний нөөцийн туслагч</span>
               </motion.div>
 
               <motion.h1
@@ -169,24 +169,24 @@ export function HomePage() {
               </motion.div>
             </div>
 
-            {/* Right: floating talent cards — talent.ai стилээр */}
+            {/* Right: floating talent cards — Шинэ зургуудаар солигдсон хэсэг */}
             <div className="lg:col-span-5 relative h-[500px] hidden lg:block">
               <FloatingTalentCard
-                image="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop"
+                image="/16.png"
                 score={94}
                 name="Candidate 1"
                 delay={0.6}
                 className="top-0 left-8"
               />
               <FloatingTalentCard
-                image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
+                image="/17.png"
                 score={86}
                 name="Candidate 2"
                 delay={0.8}
                 className="top-32 right-0"
               />
               <FloatingTalentCard
-                image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop"
+                image="/18.png"
                 score={89}
                 name="Candidate 3"
                 delay={1}
