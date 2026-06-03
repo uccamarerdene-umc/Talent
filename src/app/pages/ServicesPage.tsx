@@ -517,8 +517,7 @@ export function ServicesPage() {
       description:
         "Ажлын орчинд зан төлөв болон сэдэлжүүлэлтэд нөлөөлдөг хувь хүний онцлогийг 14 эсрэгцсэн хэмжээсээр шинжилдэг хэрэгсэл.",
       tag: "АЖИЛТАН",
-      image: "/21.png",
-        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=1000&fit=crop",
+      image: "/21.png"
       questions: "112",
       duration: "12–15",
       language: "Олон хэлт",
