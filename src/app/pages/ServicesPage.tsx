@@ -364,8 +364,7 @@ export function ServicesPage() {
       description:
         "Хувь хүний 5 үндсэн зан төлвийг (нээлттэй сэтгэлгээ, нягт нямбай байдал, нийтэч байдал, бусдыг ойлгох байдал, сэтгэл хөдлөлийн тэнцвэр) тодорхойлно.",
       tag: "ЗАН ТӨЛӨВ",
-      image:
-        "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=1000&fit=crop",
+      image:"/24.png",
       questions: "80",
       duration: "15–20",
       language: "Олон хэлт",
@@ -478,8 +477,7 @@ export function ServicesPage() {
       description:
         "Ажил мэргэжлийн сонирхол, карьерын чиг баримжаа, өөрт тохирох мэргэжлийн нийцлийг олоход тусалдаг тест.",
       tag: "ХУВИЙН СОНИРХОЛ",
-      image:
-        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=1000&fit=crop",
+      image:"/25.png",
       questions: "90",
       duration: "20–25",
       language: "Олон хэлт",
@@ -555,8 +553,7 @@ export function ServicesPage() {
       description:
         "Ажлын байран дээрх ёс зүйн эрсдэл, сөрөг зан үйлийг урьдчилан үнэлж, байгууллагын соёлд нийцэх шударга байдлын түвшинг тогтооно.",
       tag: "ЁС ЗҮЙ",
-      image:
-        "https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800&h=1000&fit=crop",
+      image:"/26.png",
       questions: "85",
       duration: "18–22",
       language: "Олон хэлт",
@@ -594,8 +591,7 @@ export function ServicesPage() {
       description:
         "Борлуулалт, харилцааны салбарын ажилтнуудын амжилт гаргах нөөц бололцоог үнэлнэ. 12 гол борлуулалтын чадамжийг тодорхойлдог.",
       tag: "БОРЛУУЛАЛТ",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1000&fit=crop",
+      image:"/27.png",
       questions: "95",
       duration: "20–25",
       language: "Олон хэлт",
@@ -671,8 +667,7 @@ export function ServicesPage() {
       description:
         "Ажлын байран дээр хурдтай шийдвэр гаргах, шинэ мэдээллийг хүлээн авч боловсруулах, вербал болон тоон өгөгдөлд дүн шинжилгээ хийх ерөнхий оюуны чадамжийг цогцоор үнэлнэ.",
       tag: "ОЮУНЫ ЧАДАМЖ",
-      image:
-        "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=800&h=1000&fit=crop",
+      image:"/28.png",
       questions: "55",
       duration: "25–30",
       language: "Олон хэлт",
@@ -709,8 +704,7 @@ export function ServicesPage() {
       description:
         "Бизнес сэтгэлгээ, эрсдэл даах чадвар, инновацилаг байдал болон стратегийн алсын харааг үнэлнэ.",
       tag: "БИЗНЕС СЭТГЭЛГЭЭ",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop",
+      image:"/30.png",
       questions: "70",
       duration: "15–20",
       language: "Олон хэлт",
