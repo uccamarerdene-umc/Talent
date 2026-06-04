@@ -18,27 +18,27 @@ export function ContactPage() {
   const faqs = [
     {
       question: 'Talent AI Зөвлөх төлбөртэй юу?',
-      answer: 'Тийм, Talent AI нь subscription-ийн загвар ашигладаг. Үнэ нь хэрэглэгчийн тоо, ашиглах үйлчилгээнээс хамаарна. Үнэгүй demo хүсвэл бидэнтэй холбогдоно уу.'
+      answer: 'Тийм, Talent AI нь subscription-ийн загвар ашигладаг. Сар, улирал, жилийн сонголтоор өөрийн хэрэглээнд нийцсэн багцийг сонгон ашиглаж болно.'
     },
     {
       question: 'Хэдэн хүн зэрэг ашиглах боломжтой вэ?',
-      answer: 'Бидний платформ unlimited хэрэглэгч дэмждэг. HR баг бүхэлдээ нэг зэрэг ашиглаж болно. Үнэ нь active хэрэглэгчдийн тооноос хамаарна.'
+      answer: 'Бидний платформ хязгааргүй хэрэглэгч дэмждэг. Хүний нөөц, удирдлагын баг нэг зэрэг ашиглаж болно.'
     },
     {
       question: 'Бидний өгөгдөл нууцлагдах уу?',
-      answer: 'Тийм. Бүх өгөгдөл encrypt хийгдсэн, GDPR болон Монголын хувийн мэдээллийн хуульд нийцнэ. Таны өгөгдөл зөвхөн танд харагдана, бид хэзээ ч гуравдагч талд дамжуулахгүй.'
+      answer: 'Тийм.Таны өгөгдөл зөвхөн танд харагдана, бид хэзээ ч гуравдагч талд дамжуулахгүй.'
     },
     {
       question: 'Central Test-ийн ямар тестүүдийг таниулдаг вэ?',
-      answer: 'Бид Big Five, MBTI, DISC, 16PF, CliftonStrengths зэрэг Central Test-ийн бүх validated assessments-ийг AI-аар тайлбарладаг.'
+      answer: 'Бид Big Five, CTPI, VOCATION, SALES PROFILE, REASONINGR, REASONING SPECIAL зэрэг Central Test-ийн тестүүдийн үр дүнг тайлбарлаж, зөвлөмж өгдөг.'
     },
     {
-      question: 'Дотроо суулгаж болох уу (on-premise)?',
-      answer: 'Одоогоор бид cloud-only үйлчилгээ санал болгож байна. On-premise deployment хүсвэл бидэнтэй холбогдож, ярилцацгаая.'
+      question: 'Татаж авч ашиглаж болох уу? (on-premise)',
+      answer: 'Одоогоор бид cloud-only үйлчилгээ санал болгож байна.'
     },
     {
       question: 'Англи хэлээр ажилладаг уу?',
-      answer: 'Одоогоор Talent AI зөвхөн монгол хэлээр ажилладаг. 2026 оны 3-р улиралд англи хувилбар гарна.'
+      answer: 'Одоогоор Talent AI зөвхөн монгол хэлээр ажилладаг.'
     }
   ];
 
@@ -61,10 +61,10 @@ export function ContactPage() {
             <span className="font-semibold text-xs tracking-[0.15em] uppercase">ХОЛБОО БАРИХ</span>
           </div>
           <h1 className="text-6xl lg:text-7xl font-bold text-white mb-6 max-w-4xl">
-            Ярилцацгаая
+            Бидэнтэй холбоо барих
           </h1>
           <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
-            Танай байгууллагад UMC Talent AI хэрхэн ашиглах талаар мэргэжилтнүүдтэй маань шууд холбогдоорой.
+            UMC Talent AI хэрхэн ашиглах талаар мэргэжилтнүүдтэй маань шууд холбогдоорой.
           </p>
         </div>
       </section>
@@ -145,8 +145,8 @@ export function ContactPage() {
                   >
                     <option value="">Сонгох...</option>
                     <option value="recruitment">Сонгон шалгаруулалт</option>
-                    <option value="team">Багийн шинжилгээ</option>
-                    <option value="development">Хөгжлийн төлөвлөгөө</option>
+                    <option value="team">Talent Management</option>
+                    <option value="development">Хувийн хөгжлийн төлөвлөгөө</option>
                     <option value="other">Бусад</option>
                   </select>
                 </div>
