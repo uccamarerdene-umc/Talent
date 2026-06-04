@@ -455,52 +455,30 @@ export function CaseStudiesPage() {
             />
             <motion.div 
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 30 }}
-              className="relative bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl z-10 overflow-hidden"
+              className="relative bg-white w-full max-w-2xl rounded-3xl p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto"
             >
-              <button onClick={() => setIsPurchaseModalOpen(false)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#110A26]">
+              <button onClick={() => setIsPurchaseModalOpen(false)} className="absolute top-6 right-6 text-[#6B6485] hover:text-[#110A26] z-10">
                 <X className="w-5 h-5" />
               </button>
               
-              {!purchaseSubmitted ? (
-                <>
-                  <div className="w-12 h-12 bg-[#E9E2FA] rounded-2xl flex items-center justify-center mb-4 text-[#560591]">
-                    <ShoppingBag className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#110A26] mb-2">Бүрэн тайлан захиалах</h3>
-                  <p className="text-sm text-[#6B6485] mb-6">Хүсэлтээ илгээснээр манай борлуулалтын менежер тантай эргэж холбогдон, үнийн санал болон дэлгэрэнгүй мэдээллийг хүргэх болно.</p>
-                  
-                  <form onSubmit={handlePurchaseSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Таны Нэр</label>
-                      <input required type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Нэрээ оруулна уу" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Утасны дугаар</label>
-                      <input required type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Холбоо барих утас" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Имэйл хаяг</label>
-                      <input required type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Имэйл хаягаа оруулна уу" />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold uppercase text-[#110A26] mb-1">Байгууллагын нэр</label>
-                      <input type="text" value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})} className="w-full bg-[#FAFAFC] border border-[#EBE7F4] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#560591]" placeholder="Компанийн нэр /заавал биш/" />
-                    </div>
-                    
-                    <button type="submit" className="w-full mt-2 bg-[#560591] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#110A26] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-purple-500/10">
-                      <Send className="w-4 h-4" /> Хүсэлт илгээх
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-12 text-center">
-                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-10 h-10" />
-                  </div>
-                  <h4 className="text-xl font-bold text-[#110A26] mb-2">Хүсэлт амжилттай илгээгдлээ!</h4>
-                  <p className="text-sm text-[#6B6485]">Манай менежер тантай тун удахгүй холбогдох болно. Баярлалаа.</p>
-                </motion.div>
-              )}
+              <div className="w-12 h-12 bg-[#E9E2FA] rounded-2xl flex items-center justify-center mb-4 text-[#560591]">
+                <ShoppingBag className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-[#110A26] mb-2">Бүрэн тайлан захиалах</h3>
+              <p className="text-sm text-[#6B6485] mb-6">Хүсэлтээ илгээснээр манай борлуулалтын менежер тантай эргэж холбогдон, үнийн санал болон дэлгэрэнгүй мэдээллийг хүргэх болно.</p>
+              
+              {/* Microsoft Forms iframe */}
+              <iframe 
+                src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=qAjvAQ5TyEqu0vCtaSs7uzGKxoA4v5BMgV3H_U8bi-tUNU1ZVVlBODgyRVdWOUROUFkwVTY5MFFaNi4u&embed=true"
+                width="100%" 
+                height="600"
+                frameBorder="0"
+                marginWidth={0}
+                marginHeight={0}
+                allowFullScreen
+                className="border-0 rounded-xl w-full"
+                title="Бүрэн тайлан захиалах"
+              ></iframe>
             </motion.div>
           </div>
         )}
