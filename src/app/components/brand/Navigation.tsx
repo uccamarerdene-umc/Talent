@@ -25,14 +25,14 @@ export function Navigation() {
 
   // Mega menu: Central Test + Talent AI хоёр баганаар
   const megaCentralTest = [
-    { title: 'Central Test тухай', desc: '23 жилийн психометрик туршлага', anchor: '' },
+    { title: 'Central Test тухай', desc: '11 жилийн сэтгэл зүйн тест үнэлгээний туршлага', anchor: '' },
     { title: 'Тестүүд', desc: 'CTPI-R, Big Five, EMOTION, MOTIVATION+', anchor: '#tests' },
     { title: 'Үндсэн зарчмууд', desc: 'Шинжлэх ухаан, технологи, ёс зүй', anchor: '#tests' },
   ];
 
   const megaTalentAI = [
-    { title: 'Үйлчилгээ', desc: '4 чиглэлийн HR шийдэл', anchor: '#services' },
-    { title: 'GraphRAG технологи', desc: 'Хэрхэн ажилладаг — 4 багана', anchor: '#how' },
+    { title: 'Үйлчилгээ', desc: 'Хүний нөөцийн шийдэл', anchor: '#services' },
+    { title: 'GraphRAG технологи', desc: 'Ажиллах зарчим', anchor: '#how' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -127,7 +127,7 @@ export function Navigation() {
                         to="/services#chat"
                         className="mt-4 inline-flex items-center gap-2 text-[#E63995] font-semibold text-sm hover:gap-3 transition-all"
                       >
-                        Чат туршиж үзэх →
+                        ТALENT AI ашиглах →
                       </Link>
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export function Navigation() {
               href="#chat"
               className="bg-[#E63995] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#2A1466] transition-colors flex items-center gap-2"
             >
-              Чат руу орох
+              ТALENT AI ашиглах
               <span>→</span>
             </a>
           </div>
@@ -173,7 +173,7 @@ export function Navigation() {
               href="#chat"
               className="block mx-4 mt-4 bg-[#E63995] text-white text-center px-8 py-3 rounded-full font-semibold"
             >
-              Чат руу орох →
+              TALENT AI ашиглах →
             </a>
           </div>
         )}
