@@ -64,7 +64,7 @@ export function ContactPage() {
             Бидэнтэй холбоо барих
           </h1>
           <p className="text-lg text-white/70 max-w-2xl leading-relaxed">
-            UMC Talent AI хэрхэн ашиглах талаар мэргэжилтнүүдтэй маань шууд холбогдоорой.
+            Бидэнтэй хамтран ажиллахыг хүсвэл холбоо бариарай.
           </p>
         </div>
       </section>
@@ -172,7 +172,6 @@ export function ContactPage() {
                     required
                   />
                   <label htmlFor="agreement" className="text-sm text-[#6B6485]">
-                    Нөхцөл болон нууцлалын бодлоготой танилцсан
                   </label>
                 </div>
 
@@ -234,7 +233,7 @@ export function ContactPage() {
                     <div>
                       <div className="font-semibold text-[#1A0F3E] mb-1">Веб</div>
                       <a href="https://umctalent-ai.duckdns.org" className="text-[#6B6485] hover:text-[#E63995]">
-                        umctalent-ai.duckdns.org
+                        umctalent-ai.mn
                       </a>
                     </div>
                   </div>
@@ -282,7 +281,7 @@ export function ContactPage() {
             <span>★</span>
             <span className="font-semibold text-xs tracking-[0.15em] uppercase">ТҮГЭЭМЭЛ АСУУЛТУУД</span>
           </div>
-          <h2 className="text-4xl font-bold text-[#1A0F3E] mb-12 text-center">Хариулт нь энд байгаа байх</h2>
+          <h2 className="text-4xl font-bold text-[#1A0F3E] mb-12 text-center">Хариулт нь энд байна</h2>
 
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, idx) => (
@@ -312,12 +311,12 @@ export function ContactPage() {
       {/* MINI CTA */}
       <section className="bg-[#E9E2FA] py-16">
         <div className="max-w-[1280px] mx-auto px-6 text-center">
-          <h3 className="text-2xl font-bold text-[#1A0F3E] mb-6">Шууд ярилцмаар байна уу?</h3>
+          <h3 className="text-2xl font-bold text-[#1A0F3E] mb-6">TALENT AI ашиглаж далд өгөгдөлөө олж нээгээрэй</h3>
           <a
             href="#chat"
             className="inline-flex items-center gap-2 bg-[#E63995] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#2A1466] transition-colors"
           >
-            Шинэ чат руу орох →
+            ТALENT AI ашиглах →
           </a>
         </div>
       </section>
